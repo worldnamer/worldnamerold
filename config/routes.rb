@@ -7,8 +7,10 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy', as: :get_destroy_user_session
   end
 
+  resources :projects, only: [:index, :new, :create, :show]
+
   authenticated :user do
-    root to: 'welcome#main', as: :authenticated_root
+    root to: 'welcome#main', as: :main
   end
 
   unauthenticated do

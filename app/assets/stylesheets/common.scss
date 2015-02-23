@@ -24,3 +24,14 @@ html {
   right: 10px;
   color: gainsboro;
 }
+
+.contentpane {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 100px;
+
+  box-sizing: border-box;
+  height: 100%;
+  padding-left: 25px;
+}

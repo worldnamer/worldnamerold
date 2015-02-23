@@ -1,0 +1,8 @@
+#projects.contentpane
+  %ul
+  - @projects.each do |project|
+    %li= project.name
+  = link_to 'Create', new_project_path, id: 'create-project'
+
+= render partial: 'nav'
+

@@ -1,0 +1,33 @@
+ul#nav {
+  height: 100%;
+  width: 100px;
+  background-color: gainsboro;
+
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-family: 'Gruppo', cursive;
+  font-size: 20px;
+  color: steelblue;
+
+  a {
+    text-decoration: none;
+    color: steelblue;
+  }
+
+  li {
+    padding: 10px;
+    width: 100px;
+
+    &:hover {
+      background-color: steelblue;
+      color: gainsboro;
+      border-left: 5px solid gray;
+      padding-left: 5px;
+
+      a {
+        color: gainsboro;
+      }
+    }
+  }
+}
