@@ -1,0 +1,26 @@
+html {
+  height: 100%;
+  
+  body {
+    margin: 0;
+    height: 100%;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.notice {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  color: gainsboro;
+}
+
+.alert {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  color: gainsboro;
+}

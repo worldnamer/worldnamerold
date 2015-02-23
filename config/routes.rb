@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   as :user do
     post '/users/sign_in' => 'devise/sessions#create', as: :user_session
     delete '/users/sign_out' => 'devise/sessions#destroy', as: :destroy_user_session
+    get '/users/sign_out' => 'devise/sessions#destroy', as: :get_destroy_user_session
   end
 
   authenticated :user do
-    root to: 'welcome#index', as: :authenticated_root
+    root to: 'welcome#main', as: :authenticated_root
   end
 
   unauthenticated do
