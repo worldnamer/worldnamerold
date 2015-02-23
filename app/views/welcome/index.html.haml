@@ -1,8 +1,19 @@
 #welcome
-  .splash{data: {content: 'worldnamer'}} worldnamer
+  #splash{data: {content: 'worldnamer'}} worldnamer
 
   #nav.hidden
     = link_to 'Résumé', 'http://careers.stackoverflow.com/worldnamer'
     = link_to '@worldnamer', 'http://twitter.com/worldnamer'
     = link_to '+John LeBoeuf-Little', 'http://plus.google.com/+JohnLeBoeufLittle/posts'
-    = link_to 'Log In', '#'
+    - if current_user
+      = link_to 'Log Out', destroy_user_session_path, method: :delete
+    - else
+      = link_to 'Log In', '#', id: 'show-login'
+
+  #login.hidden
+    = form_tag user_session_path do
+      = hidden_field_tag 'user[email]', 'worldnamer@worldnamer.com'
+      = password_field_tag 'user[password]'
+      = check_box_tag 'user[remember_me]'
+      = label_tag 'user[remember_me]', 'remember me'
+      %button Sign In

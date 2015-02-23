@@ -8,4 +8,7 @@
     = csrf_meta_tags
     = stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Gruppo'
   %body
+    #flash
+      %p.notice= notice
+      %p.alert= alert
     = yield

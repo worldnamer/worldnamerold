@@ -1,10 +1,51 @@
 Given(/^I am not logged in$/) do
 end
 
+Given(/^a user$/) do
+  @user = User.where(email: 'worldnamer@worldnamer.com').first_or_create
+  @user.password = 'test'
+  @user.password_confirmation = 'test'
+  @user.save!
+end
+
 When(/^I view the home page$/) do
   visit root_path
 end
 
+When(/^I log in$/) do
+  visit root_path
+
+  page.execute_script %Q{
+    $('#nav').show();
+    $('button').show();
+  }
+
+  click_on 'Log In'
+  fill_in 'user[password]', with: 'test'
+  click_on 'Sign In'
+end
+
+When(/^I fail to log in$/) do
+  visit root_path
+
+  page.execute_script %Q{
+    $('#nav').show();
+    $('button').show();
+  }
+
+  click_on 'Log In'
+  fill_in 'user[password]', with: 'bogus'
+  click_on 'Sign In'
+end
+
 Then(/^I should see the splash page$/) do
   expect(page).to have_content 'worldnamer'
+end
+
+Then(/^I should be logged in$/) do
+  expect(page).to have_content 'Signed in'
+end
+
+Then(/^I should not be logged in$/) do
+  expect(page).to have_content 'Invalid email or password'
 end

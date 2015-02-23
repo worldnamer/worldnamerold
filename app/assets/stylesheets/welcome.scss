@@ -12,7 +12,7 @@ html {
   margin: 20vh auto;
   width: 54%;
 
-  .splash {
+  #splash {
     font-family: 'Gruppo', cursive;
     font-size: 10vw;
     text-align: center;
@@ -48,4 +48,52 @@ html {
       }
     }
   }
+
+  #login {
+    background-color: steelblue;
+    padding: 20px;
+    margin-top: 10px;
+    overflow: hidden;
+
+    input[type=password] {
+      width: 70%;
+
+      @media (max-width: 1052px) {
+        width: 100%;
+      }
+    }
+
+    input[type=checkbox] {
+      margin-left: 20px;
+
+      @media (max-width: 1052px) {
+        margin-left: 0;
+        margin-top: 5px;
+      }
+    }
+
+    button {
+      display: none;
+    }
+
+    label {
+      margin-right: 10px;
+      color: gainsboro;
+      font-family: 'Gruppo', cursive;
+    }
+  }
+}
+
+.notice {
+  position: absolute;
+  top: 0px;
+  color: gainsboro;
+  margin-left: 10px;
+}
+
+.alert {
+  position: absolute;
+  top: 0px;
+  color: gainsboro;
+  margin-left: 10px;
 }

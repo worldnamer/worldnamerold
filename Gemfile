@@ -32,6 +32,9 @@ gem 'puma'
 # Use HAML instead of ERB for HTML generation
 gem 'haml-rails'
 
+# Use devise for authentication
+gem 'devise'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -50,4 +53,7 @@ group :development, :test do
 
   # Unit testing with RSpec
   gem 'rspec-rails'
+
+  # Use watir-webdriver to drive real web browsers
+  gem 'watir-webdriver'
 end
