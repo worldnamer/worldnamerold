@@ -1,8 +1,13 @@
 #projects.contentpane
-  %ul
-  - @projects.each do |project|
-    %li= project.name
-  = link_to 'Create', new_project_path, id: 'create-project'
+  .container
+    - @projects.each do |project|
+      .project
+        .name= project.name
+        .description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, officiis sunt neque facilis culpa molestiae necessitatibus delectus veniam provident.
+    = link_to new_project_path, id: 'create-project' do
+      .project
+        .name Create A New Project
+        .description +
 
 = render partial: 'nav'
 

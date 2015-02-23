@@ -1,7 +1,7 @@
 ul#nav {
   height: 100%;
   width: 100px;
-  background-color: gainsboro;
+  background-color: lighten(gainsboro, 10%);
 
   list-style-type: none;
   margin: 0;

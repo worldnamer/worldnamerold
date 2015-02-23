@@ -1,3 +1,98 @@
 #projects {
-  
+  .container {
+    @include display(flex);
+    @include flex-wrap(wrap);
+    @include justify-content(space-between);
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+
+  #create-project {
+    @include flex-grow(1);
+  }
+
+  .project {
+    // JWLL: based on the Bourbon.io cards refill
+    $border-radius: 3px !default;
+    $base-spacing: 1.5em !default;
+    $project-border-color: gainsboro !default;
+    $project-border: 1px solid $project-border-color;
+    $project-background: lighten($project-border-color, 10%);
+    $project-margin: 0.5em;
+
+    @include flex-basis(15em);
+    @include flex-grow(1);
+    @include transition (all 0.2s ease-in-out);
+
+    background-color: $project-background;
+    border-radius: $border-radius;
+    border: $project-border;
+    box-shadow: 0 2px 4px darken(white, 10%);
+    cursor: pointer;
+    margin: $project-margin 2*$project-margin $project-margin 0;
+    position: relative;
+
+    .name {
+      @include transition (all 0.2s ease-in-out);
+      
+      background-color: $project-background;
+      color: steelblue;
+      border-bottom: $project-border;
+      border-radius: $border-radius $border-radius 0 0;
+      padding: ($base-spacing / 3) ($base-spacing / 2);
+      font-family: 'Gruppo', cursive;
+      font-weight: bold;
+      line-height: 1.5em;
+    }
+
+    .description {
+      font-size: 0.9em;
+      line-height: 1.5em;
+      padding: ($base-spacing / 2) ($base-spacing / 2);
+
+      p {
+        margin: 0 0 ($base-spacing / 2);
+      }
+    }
+    
+    &:focus,
+    &:hover {
+      background-color: lighten($project-background, 5%);
+      
+      .name {
+        color: gainsboro;
+        background-color: steelblue;
+      }
+    }
+
+    &:active {
+      background-color: $project-background;
+
+      .project-header {
+        background-color: $project-background;
+      }
+    }
+
+    // JWLL commented out until we know what to do with it.
+    // $project-image-background: #DBD199;
+    // $project-image-hover-background: lighten($project-image-background, 5%);
+    // .project-image {
+    //   overflow: hidden;
+    //   max-height: 150px;
+
+    //   img {
+    //     @include transition (all 0.2s ease-in-out);
+    //     background: $project-image-background;
+    //     border-top-left-radius: $border-radius;
+    //     border-top-right-radius: $border-radius;
+    //     width: 100%;
+    //   }
+    //   &hover   .project-image img {
+    // background: $project-image-hover-background;
+    // }
+    // }
+  }
 }
