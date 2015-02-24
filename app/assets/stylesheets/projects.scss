@@ -10,10 +10,6 @@
     }
   }
 
-  #create-project {
-    @include flex-grow(1);
-  }
-
   .project {
     // JWLL: based on the Bourbon.io cards refill
     $border-radius: 3px !default;
@@ -37,7 +33,7 @@
 
     .name {
       @include transition (all 0.2s ease-in-out);
-      
+
       background-color: $project-background;
       color: steelblue;
       border-bottom: $project-border;
@@ -94,5 +90,25 @@
     // background: $project-image-hover-background;
     // }
     // }
+  }
+}
+
+#create-project {
+  margin-top: 10px;
+  .field {
+    @include display(flex);
+    @include flex-wrap(wrap);
+    @include justify-content(space-between);
+
+    label {
+      min-width: 100px;
+      line-height: 2.4em;
+    }
+
+    input[type='text'] {
+      @include flex-grow(1);
+      width: auto;
+      margin-right: 25px;
+    }
   }
 }

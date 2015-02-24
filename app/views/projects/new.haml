@@ -2,6 +2,7 @@
 
 #create-project.contentpane
   = form_for @project do |f|
-    = f.label :name
-    = f.text_field :name
+    .field
+      = f.label :name
+      = f.text_field :name
     = f.submit 'Create'
