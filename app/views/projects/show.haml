@@ -1,1 +1,6 @@
 = render partial: 'nav'
+
+#show-project.contentpane
+  = link_to projects_path do
+    %i.fa.fa-angle-double-left
+  %h1= @project.name

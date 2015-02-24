@@ -7,6 +7,11 @@
     a {
       text-decoration: none;
       color: black;
+
+      &:not(#create-project-link) {
+        @include flex-basis(15em);
+        @include flex-grow(1);
+      }
     }
   }
 
@@ -19,8 +24,6 @@
     $project-background: lighten($project-border-color, 10%);
     $project-margin: 0.5em;
 
-    @include flex-basis(15em);
-    @include flex-grow(1);
     @include transition (all 0.2s ease-in-out);
 
     background-color: $project-background;
@@ -110,5 +113,33 @@
       width: auto;
       margin-right: 25px;
     }
+  }
+}
+
+#show-project {
+  h1 {
+    display: inline-block;
+    padding: 0;
+    margin: 0px;
+
+    font-family: 'Gruppo', cursive;
+    color: steelblue;
+  }
+
+  a {
+    position: absolute;
+    left: 10px;
+    top: 2px;
+    text-decoration: none;
+    color: steelblue;
+
+    &:hover {
+      color: #90b4d2;;
+    }
+
+    i {
+      vertical-align: top;
+      line-height: 2.2em;
+   }
   }
 }
