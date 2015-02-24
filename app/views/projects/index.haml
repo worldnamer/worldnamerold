@@ -1,14 +1,15 @@
 #projects.contentpane
   .container
     - @projects.each do |project|
-      = link_to project_path(project) do
-        .project
-          .name= project.name
-          .description= project.description
-    = link_to new_project_path, id: 'create-project-link' do
       .project
-        .name Create A New Project
-        .description +
+        = link_to project_path(project) do
+          .name= project.name
+        = link_to project_path(project), method: :delete do
+          %i.fa.fa-close
+        .description= project.description
+    = link_to new_project_path, id: 'create-project-link', class: 'project' do
+      .name Create A New Project
+      .description +
 
 = render partial: 'nav'
 

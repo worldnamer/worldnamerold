@@ -9,8 +9,6 @@
       color: black;
 
       &:not(#create-project-link) {
-        @include flex-basis(15em);
-        @include flex-grow(1);
       }
     }
   }
@@ -25,6 +23,9 @@
     $project-margin: 0.5em;
 
     @include transition (all 0.2s ease-in-out);
+
+    @include flex-basis(15em);
+    @include flex-grow(1);
 
     background-color: $project-background;
     border-radius: $border-radius;
@@ -47,6 +48,13 @@
       line-height: 1.5em;
     }
 
+    .fa-close {
+      position: absolute;
+      color: steelblue;
+      right: 10px;
+      top: 10px;
+    }
+
     .description {
       font-size: 0.9em;
       line-height: 1.5em;
@@ -64,6 +72,10 @@
       .name {
         color: gainsboro;
         background-color: steelblue;
+      }
+
+      .fa-close {
+        color: gainsboro;
       }
     }
 
