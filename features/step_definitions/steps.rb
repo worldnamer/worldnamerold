@@ -18,7 +18,7 @@ Given(/^I am logged in$/) do
 end
 
 Given(/^I have a project$/) do
-  @project = Project.create(name: 'Test project')
+  @project = Project.create(name: 'Test project', description: 'Test description.')
 end
 
 When(/^I view the home page$/) do
@@ -81,4 +81,5 @@ end
 
 Then(/^I should see my project in the list$/) do
   expect(page).to have_content @project.name
+  expect(page).to have_content @project.description
 end
