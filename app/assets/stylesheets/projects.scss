@@ -83,25 +83,6 @@
         background-color: $project-background;
       }
     }
-
-    // JWLL commented out until we know what to do with it.
-    // $project-image-background: #DBD199;
-    // $project-image-hover-background: lighten($project-image-background, 5%);
-    // .project-image {
-    //   overflow: hidden;
-    //   max-height: 150px;
-
-    //   img {
-    //     @include transition (all 0.2s ease-in-out);
-    //     background: $project-image-background;
-    //     border-top-left-radius: $border-radius;
-    //     border-top-right-radius: $border-radius;
-    //     width: 100%;
-    //   }
-    //   &hover   .project-image img {
-    // background: $project-image-hover-background;
-    // }
-    // }
   }
 }
 
@@ -181,19 +162,42 @@
   }
 
   a {
-    position: absolute;
-    left: 10px;
-    top: 2px;
     text-decoration: none;
     color: steelblue;
 
     &:hover {
       color: #90b4d2;
     }
+  }
+
+  a#return-link {
+    position: absolute;
+    left: 10px;
+    top: 2px;
 
     i {
       vertical-align: top;
       line-height: 2.2em;
    }
+  }
+}
+
+#create-snippet {
+  margin-top: 10px;
+  .field {
+    @include display(flex);
+    @include flex-wrap(wrap);
+    @include justify-content(space-between);
+
+    label {
+      min-width: 100px;
+      line-height: 2.4em;
+    }
+
+    input[type='text'], textarea {
+      @include flex-grow(1);
+      width: auto;
+      margin-right: 25px;
+    }
   }
 }

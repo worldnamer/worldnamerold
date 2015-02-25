@@ -63,6 +63,15 @@ When(/^I view my projects$/) do
   visit projects_path
 end
 
+When(/^I create a snippet$/) do
+  visit project_path(@project)
+  click_on 'Add'
+  fill_in 'snippet[title]', with: 'Wow, You Can Recycle That? - Earth911.com'
+  fill_in 'snippet[excerpt]', with: 'A few weeks ago, Earth911 investigated some of the lesser known recyclables. Sure, they don’t receive as much media attention as some of their co-stars like the...'
+  fill_in 'snippet[url]', with: 'http://example.com'
+  click_on 'Create'
+end
+
 Then(/^I should see the splash page$/) do
   expect(page).to have_content 'worldnamer'
 end
@@ -82,4 +91,8 @@ end
 Then(/^I should see my project in the list$/) do
   expect(page).to have_content @project.name
   expect(page).to have_content @project.description
+end
+
+Then(/^I should have a snippet$/) do
+  expect(Snippet.count).to be 1
 end

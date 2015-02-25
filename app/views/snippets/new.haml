@@ -1,0 +1,14 @@
+= render partial: 'nav'
+
+#create-snippet.contentpane
+  = form_for [@project, @snippet] do |f|
+    .field
+      = f.label :title
+      = f.text_field :title
+    .field
+      = f.label :excerpt
+      = f.text_area :excerpt
+    .field
+      = f.label :url
+      = f.text_field :url
+    = f.submit 'Create'
