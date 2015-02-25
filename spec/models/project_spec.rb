@@ -10,4 +10,8 @@ describe Project do
   it 'has a description' do
     subject.description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, officiis sunt neque facilis culpa molestiae necessitatibus delectus veniam provident.'
   end
+
+  it 'has snippets' do
+    subject.snippets << Snippet.new
+  end
 end

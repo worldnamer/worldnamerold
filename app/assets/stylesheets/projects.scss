@@ -7,9 +7,6 @@
     a {
       text-decoration: none;
       color: black;
-
-      &:not(#create-project-link) {
-      }
     }
   }
 
@@ -138,6 +135,51 @@
     color: steelblue;
   }
 
+  h2 {
+    font-family: 'Gruppo', cursive;
+    color: steelblue;
+    margin-bottom: 0;
+    border-bottom: 1px solid gainsboro;
+    margin-right: 5px;
+  }
+
+  .links {
+    margin-right: 25px;
+    .link {
+      border-bottom: 1px solid lighten(gainsboro, 10%);
+      padding-top: 10px;
+      padding-bottom: 10px;
+      position: relative;
+
+      .title {
+        font-family: 'Gruppo', cursive;
+        font-size: 1.2em;
+        color: steelblue;
+        margin-right: 20px;
+      }
+
+      .excerpt {
+        font-size: 0.8em;
+      }
+
+      .fa-close {
+        position: absolute;
+        color: steelblue;
+        right: 10px;
+        top: 10px;
+      }
+    }
+  }
+
+  #add-link-link {
+    color: steelblue;
+    margin-top: 10px;
+
+    &:hover {
+      color: #90b4d2;;
+    }
+  }
+
   a {
     position: absolute;
     left: 10px;
@@ -146,7 +188,7 @@
     color: steelblue;
 
     &:hover {
-      color: #90b4d2;;
+      color: #90b4d2;
     }
 
     i {
