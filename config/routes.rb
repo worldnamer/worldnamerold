@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :projects, only: [:index, :new, :create, :show, :destroy] do
-    resources :snippets, only: [:new, :create]
+    resources :snippets, only: [:new, :create, :destroy]
   end
 
   authenticated :user do

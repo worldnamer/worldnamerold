@@ -17,4 +17,13 @@ class SnippetsController < ApplicationController
 
     respond_with @project
   end
+
+  def destroy
+    @project = Project.find(params[:project_id])
+    @snippet = Snippet.find(params[:id])
+
+    @snippet.destroy if @project == @snippet.project
+
+    respond_with @project
+  end
 end

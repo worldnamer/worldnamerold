@@ -21,6 +21,10 @@ Given(/^I have a project$/) do
   @project = Project.create(name: 'Test project', description: 'Test description.')
 end
 
+Given(/^I have a snippet$/) do
+  @project.snippets.create(title: 'Test title', excerpt: 'Test excerpt', url: 'www.example.com')
+end
+
 When(/^I view the home page$/) do
   visit root_path
 end
@@ -72,6 +76,11 @@ When(/^I create a snippet$/) do
   click_on 'Create'
 end
 
+When(/^I delete the snippet$/) do
+  visit project_path(@project)
+  find(:css, 'a[name=delete-link]').click()
+end
+
 Then(/^I should see the splash page$/) do
   expect(page).to have_content 'worldnamer'
 end
@@ -95,4 +104,8 @@ end
 
 Then(/^I should have a snippet$/) do
   expect(Snippet.count).to be 1
+end
+
+Then(/^I should have no snippets$/) do
+  expect(Snippet.count).to be 0
 end
