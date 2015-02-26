@@ -9,10 +9,11 @@
   %h2 Links
   .links
     - @project.snippets.each do |snippet|
-      .link
-        .title= snippet.title
-        .excerpt= snippet.excerpt
-        %i.fa.fa-close
+      = link_to url_with_protocol(snippet.url), target: '_blank' do
+        .link
+          .title= snippet.title
+          .excerpt= snippet.excerpt
+          %i.fa.fa-close
   #add-link-link 
     = link_to new_project_snippet_path(@project) do
       %i.fa.fa-plus

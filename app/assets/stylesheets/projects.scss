@@ -149,6 +149,20 @@
         right: 10px;
         top: 10px;
       }
+
+      &:hover {
+        .title {
+          color: #90b4d2;
+        }
+      }
+    }
+
+    a {
+      color: black;
+
+      &:hover {
+        color: black;
+      }
     }
   }
 
