@@ -4,4 +4,5 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :rememberable, :trackable, :lockable
 
   has_many :projects
+  has_many :goals
 end

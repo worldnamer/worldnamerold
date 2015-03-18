@@ -2,7 +2,7 @@ class GoalsController < ApplicationController
   respond_to :html
 
   def index
-    @goals = Goal.all
+    @goals = current_user.goals
   end
 
   def new
@@ -10,7 +10,7 @@ class GoalsController < ApplicationController
   end
 
   def create
-    goal = Goal.create(description: params[:goal][:description])
+    goal = Goal.create(description: params[:goal][:description], user: current_user)
     
     respond_with goal, location: goals_path
   end

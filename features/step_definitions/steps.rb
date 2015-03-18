@@ -29,9 +29,16 @@ Given(/^another user has a project$/) do
   User.create(email: 'test@example.com', password: 'password', password_confirmation: 'password').projects.create(name: 'test', description: 'test')
 end
 
-Then(/^I should see one project in the list$/) do
-  visit projects_path
-  expect(all(:css, '.project').count).to be 2 # 1 for the project, 1 for the add link
+Given(/^I have a goal$/) do
+  @goal = Goal.create(description: 'This is a goal.', user: @user)
+end
+
+Given(/^another user has a goal$/) do
+  User.create(email: 'test@example.com', password: 'password', password_confirmation: 'password').goals.create(description: 'test')
+end
+
+When(/^I view my goals$/) do
+  visit goals_path
 end
 
 When(/^I view the home page$/) do
@@ -96,6 +103,19 @@ When(/^I set a new goal$/) do
   @description = 'I want to go visit my friends who can\'t travel without worring about my job.'
   fill_in 'goal[description]', with: @description
   click_on 'Create'
+end
+
+Then(/^I should see one goal in the list$/) do
+  expect(all(:css, '.goal').count).to be 1
+end
+
+Then(/^I should see my goal in the list$/) do
+  expect(page).to have_content @goal.description
+end
+
+Then(/^I should see one project in the list$/) do
+  visit projects_path
+  expect(all(:css, '.project').count).to be 2 # 1 for the project, 1 for the add link
 end
 
 Then(/^I should have a goal$/) do

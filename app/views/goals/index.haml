@@ -2,7 +2,7 @@
   .container
     %ol
       - @goals.each do |goal|
-        %li= goal.description
+        %li.goal= goal.description
 
     = link_to 'Add', new_goal_path, id: 'create-goal-link'
 
