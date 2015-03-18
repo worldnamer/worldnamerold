@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   respond_to :html
 
   def index
-    @projects = Project.all
+    @projects = current_user.projects
   end
 
   def new
@@ -12,7 +12,8 @@ class ProjectsController < ApplicationController
   def create
     project = Project.new(
       name: params[:project][:name],
-      description: params[:project][:description]
+      description: params[:project][:description],
+      user: current_user
     )
     project.save!
     respond_with project

@@ -18,11 +18,20 @@ Given(/^I am logged in$/) do
 end
 
 Given(/^I have a project$/) do
-  @project = Project.create(name: 'Test project', description: 'Test description.')
+  @project = Project.create(name: 'Test project', description: 'Test description.', user: @user)
 end
 
 Given(/^I have a snippet$/) do
   @project.snippets.create(title: 'Test title', excerpt: 'Test excerpt', url: 'www.example.com')
+end
+
+Given(/^another user has a project$/) do
+  User.create(email: 'test@example.com', password: 'password', password_confirmation: 'password').projects.create(name: 'test', description: 'test')
+end
+
+Then(/^I should see one project in the list$/) do
+  visit projects_path
+  expect(all(:css, '.project').count).to be 2 # 1 for the project, 1 for the add link
 end
 
 When(/^I view the home page$/) do
@@ -107,7 +116,7 @@ Then(/^I should not be logged in$/) do
 end
 
 Then(/^I should have a project$/) do
-  expect(Project.count).to be 1
+  expect(@user.projects.count).to be 1
 end
 
 Then(/^I should see my project in the list$/) do

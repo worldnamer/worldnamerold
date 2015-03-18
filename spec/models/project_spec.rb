@@ -14,4 +14,8 @@ describe Project do
   it 'has snippets' do
     subject.snippets << Snippet.new
   end
+
+  it 'belongs to a user' do
+    subject.user = User.create
+  end
 end
