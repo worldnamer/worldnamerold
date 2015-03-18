@@ -1,4 +1,4 @@
-$ ->
+sortGoals = ->
   if $('#goals').length > 0
     $('ol').sortable(
       axis: 'y',
@@ -29,3 +29,6 @@ $ ->
         #     $('#books').effect('highlight');
         # );
     );
+
+# Because of Turbolinks, we call this with an event, rather than $.ready
+$(document).on 'page:change', sortGoals
