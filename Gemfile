@@ -68,4 +68,8 @@ group :development, :test do
 
   # Use factory_girl to extract common fixtures from tests
   gem 'factory_girl_rails'
+
+  # Use pry instead of IRB for rails console
+  gem 'pry-rails'
+  gem 'pry-doc'
 end
