@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     resources :snippets, only: [:new, :create, :destroy]
   end
 
+  resources :goals, only: [:index, :new, :create] do
+  end
+
   authenticated :user do
     root to: 'welcome#main', as: :main
   end

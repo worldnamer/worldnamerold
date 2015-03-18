@@ -81,6 +81,19 @@ When(/^I delete the snippet$/) do
   find(:css, 'a[name=delete-link]').click()
 end
 
+When(/^I set a new goal$/) do
+  visit goals_path
+  click_on 'Add'
+  @description = 'I want to go visit my friends who can\'t travel without worring about my job.'
+  fill_in 'goal[description]', with: @description
+  click_on 'Create'
+end
+
+Then(/^I should have a goal$/) do
+  visit goals_path
+  expect(page).to have_content @description
+end
+
 Then(/^I should see the splash page$/) do
   expect(page).to have_content 'worldnamer'
 end
