@@ -38,6 +38,9 @@ gem 'devise'
 # Use bourbon to provide CSS support
 gem 'bourbon'
 
+# Use jquery-ui-rails for sortable, enhanced widgets, etc.
+gem 'jquery-ui-rails'
+
 # Use fontawesome for icons
 gem 'font-awesome-rails'
 
