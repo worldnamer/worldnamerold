@@ -12,7 +12,7 @@ Given(/^I am logged in$/) do
 end
 
 Given(/^I have a project$/) do
-  @project = Project.create(name: 'Test project', description: 'Test description.', user: @user)
+  @project = @user.projects.create(name: 'Test project', description: 'Test description.')
 end
 
 Given(/^I have a snippet$/) do
@@ -20,15 +20,15 @@ Given(/^I have a snippet$/) do
 end
 
 Given(/^another user has a project$/) do
-  User.create(email: 'test@example.com', password: 'password', password_confirmation: 'password').projects.create(name: 'test', description: 'test')
+  create(:user).projects.create(name: 'test', description: 'test')
 end
 
 Given(/^I have a goal$/) do
-  @goal = Goal.create(description: 'This is a goal.', user: @user)
+  @goal = @user.goals.create(description: 'This is a goal.')
 end
 
 Given(/^another user has a goal$/) do
-  User.create(email: 'test@example.com', password: 'password', password_confirmation: 'password').goals.create(description: 'test')
+  create(:user).goals.create(description: 'test')
 end
 
 When(/^I view my goals$/) do
