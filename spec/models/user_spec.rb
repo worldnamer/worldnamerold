@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 describe User do
+  subject { create(:worldnamer) }
+
   it 'has many projects' do
-    user = User.create(email: 'worldnamer@worldnamer.com', password: 'password', password_confirmation: 'password')
-    expect(user.projects.count).to be 0
+    expect(subject.projects.count).to be 0
   end
 
   it 'has many goals' do
-    user = User.create(email: 'worldnamer@worldnamer.com', password: 'password', password_confirmation: 'password')
-    expect(user.goals.count).to be 0
+    expect(subject.goals.count).to be 0
   end
 end

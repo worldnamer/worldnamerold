@@ -2,17 +2,11 @@ Given(/^I am not logged in$/) do
 end
 
 Given(/^a user$/) do
-  @user = User.where(email: 'worldnamer@worldnamer.com').first_or_create
-  @user.password = 'test'
-  @user.password_confirmation = 'test'
-  @user.save!
+  @user = create(:worldnamer)
 end
 
 Given(/^I am logged in$/) do
-  @user = User.where(email: 'worldnamer@worldnamer.com').first_or_create
-  @user.password = 'test'
-  @user.password_confirmation = 'test'
-  @user.save!
+  @user = create(:worldnamer)
 
   login_as @user
 end
@@ -54,7 +48,7 @@ When(/^I log in$/) do
   }
 
   click_on 'Log In'
-  fill_in 'user[password]', with: 'test'
+  fill_in 'user[password]', with: 'password'
   click_on 'Sign In'
 end
 

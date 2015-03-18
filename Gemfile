@@ -62,4 +62,7 @@ group :development, :test do
 
   # Use watir-webdriver to drive real web browsers
   gem 'watir-webdriver'
+
+  # Use factory_girl to extract common fixtures from tests
+  gem 'factory_girl_rails'
 end
