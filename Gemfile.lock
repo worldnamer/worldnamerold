@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/worldnamer/jquery-simulate-drag-sortable-rails.git
+  revision: 7594d695c38a06ac83b8c5d9e5820d1cdf6888cb
+  specs:
+    jquery-simulate-drag-sortable-rails (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -270,6 +276,7 @@ DEPENDENCIES
   haml-rails
   jbuilder (~> 2.0)
   jquery-rails
+  jquery-simulate-drag-sortable-rails!
   jquery-ui-rails
   pg
   pry-doc
