@@ -79,7 +79,9 @@ end
 
 When(/^I create a snippet$/) do
   visit project_path(@project)
-  click_on 'Add'
+  within :css, '#add-link-link' do
+    click_on 'Add'
+  end
   fill_in 'snippet[title]', with: 'Wow, You Can Recycle That? - Earth911.com'
   fill_in 'snippet[excerpt]', with: 'A few weeks ago, Earth911 investigated some of the lesser known recyclables. Sure, they don’t receive as much media attention as some of their co-stars like the...'
   fill_in 'snippet[url]', with: 'http://example.com'
