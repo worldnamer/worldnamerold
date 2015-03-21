@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require jquery-ui/sortable
 //= require turbolinks
+//= require best_in_place
 //= require jquery.simulate.drag-sortable
 //= require_tree .

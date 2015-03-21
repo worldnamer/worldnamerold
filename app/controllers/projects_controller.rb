@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  respond_to :html
+  respond_to :html, :json
 
   def index
     @projects = current_user.projects
@@ -28,6 +28,13 @@ class ProjectsController < ApplicationController
 
     @project.destroy if @project
 
+    respond_with @project
+  end
+
+  def update
+    @project = Project.find(params[:id])
+
+    @project.update_attributes(params.require(:project).permit(:name, :description))
     respond_with @project
   end
 end

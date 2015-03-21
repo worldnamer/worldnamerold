@@ -5,6 +5,7 @@
 # files.
 
 require 'cucumber/rails'
+require 'best_in_place/test_helpers'
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any

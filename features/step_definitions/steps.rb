@@ -99,6 +99,21 @@ When(/^I set a new goal$/) do
   click_on 'Create'
 end
 
+When(/^I view my project$/) do
+  visit project_path(@project)
+end
+
+When(/^I update its name to '(.*)'$/) do |name|
+  bip_text @project, :name, name
+  @project.name = name
+end
+
+Then(/^my project should be updated$/) do
+  visit project_path(@project)
+
+  expect(page).to have_content @project.name
+end
+
 Then(/^I should see one goal in the list$/) do
   expect(all(:css, '.goal').count).to be 1
 end
