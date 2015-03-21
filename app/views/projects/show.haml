@@ -6,6 +6,16 @@
   %h1= best_in_place @project, :name
   .description= best_in_place @project, :description
 
+  %h2 To Do
+  .todos
+    - @project.todos.each do |todo|
+      .todo
+        .description= todo.description
+  #add-todo-link
+    = link_to new_project_todo_path(@project) do
+      %i.fa.fa-plus
+      Add
+
   %h2 Links
   .links
     - @project.snippets.each do |snippet|

@@ -8,4 +8,8 @@ FactoryGirl.define do
       email 'worldnamer@worldnamer.com'
     end
   end
+
+  factory :project do
+    user
+  end
 end

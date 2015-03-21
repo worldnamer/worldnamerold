@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :projects, only: [:index, :new, :create, :show, :destroy, :update] do
     resources :snippets, only: [:new, :create, :destroy]
+    resources :todos, only: [:new, :create, :update, :destroy]
   end
 
   resources :goals, only: [:index, :new, :create] do

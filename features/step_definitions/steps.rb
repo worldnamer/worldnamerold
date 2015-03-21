@@ -115,6 +115,23 @@ When(/^I update its description to '(.*)'$/) do |description|
   @project.description = description
 end
 
+When(/^I add a todo to my project$/) do
+  visit project_path(@project)
+  within :css, '#add-todo-link' do
+    click_on 'Add'
+  end
+
+  @description = 'Pick up milk.'
+  fill_in 'todo[description]', with: @description
+  click_on 'Create'
+end
+
+Then(/^I should have that todo$/) do
+  visit project_path(@project)
+
+  expect(page).to have_content @description
+end
+
 Then(/^my project should be updated$/) do
   visit project_path(@project)
 

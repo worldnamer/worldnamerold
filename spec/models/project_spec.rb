@@ -18,4 +18,8 @@ describe Project do
   it 'belongs to a user' do
     subject.user = User.create
   end
+
+  it 'has todos' do
+    subject.todos << Todo.new
+  end
 end
