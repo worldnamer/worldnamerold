@@ -77,6 +77,7 @@ group :development, :test do
   # Use pry instead of IRB for rails console
   gem 'pry-rails'
   gem 'pry-doc'
+  gem 'pry-byebug'
 
   # Include jquery.simulate.drag-sortable for testing list dragging tests
   gem 'jquery-simulate-drag-sortable-rails', git: 'https://github.com/worldnamer/jquery-simulate-drag-sortable-rails.git'
