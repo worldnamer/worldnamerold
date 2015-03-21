@@ -108,10 +108,16 @@ When(/^I update its name to '(.*)'$/) do |name|
   @project.name = name
 end
 
+When(/^I update its description to '(.*)'$/) do |description|
+  bip_text @project, :description, description
+  @project.description = description
+end
+
 Then(/^my project should be updated$/) do
   visit project_path(@project)
 
   expect(page).to have_content @project.name
+  expect(page).to have_content @project.description
 end
 
 Then(/^I should see one goal in the list$/) do
