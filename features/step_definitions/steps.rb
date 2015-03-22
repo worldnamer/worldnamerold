@@ -31,6 +31,18 @@ Given(/^another user has a goal$/) do
   create(:user).goals.create(description: 'test')
 end
 
+Given(/^I have a project with a todo$/) do
+  step "I have a project"
+
+  @todo = @project.todos.create(description: "complete this test")
+end
+
+When(/^I mark that todo complete$/) do
+  visit project_path(@project)
+
+  find(:css, "#todo_#{@todo.id}").click
+end
+
 When(/^I view my goals$/) do
   visit goals_path
 end
@@ -124,6 +136,12 @@ When(/^I add a todo to my project$/) do
   @description = 'Pick up milk.'
   fill_in 'todo[description]', with: @description
   click_on 'Create'
+end
+
+Then(/^my todo should be done$/) do
+  visit project_path(@project)
+  
+  expect(@todo.reload).to be_completed
 end
 
 Then(/^I should have that todo$/) do

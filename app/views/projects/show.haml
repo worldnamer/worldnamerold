@@ -7,8 +7,9 @@
   %h2 To Do
   .todos
     - @project.todos.each do |todo|
-      .todo
-        .description= todo.description
+      .todo{id: "todo_#{todo.id}"}
+        = best_in_place todo, :completed, as: :checkbox, url: project_todo_path(@project, todo), collection: {'false' => raw("<i class='fa fa-square-o'></i>"), 'true' => raw("<i class='fa fa-check-square-o'></i>")}, place_holder: raw("<i class='fa fa-square-o'></i>"), activator: "#todo_#{todo.id}"
+        %span.description= todo.description
   #add-todo-link
     = link_to new_project_todo_path(@project) do
       %i.fa.fa-plus

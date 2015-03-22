@@ -10,4 +10,24 @@ describe TodosController do
       expect(Todo.count).to eq(1)
     end
   end
+
+  context '#update' do
+    it 'completes the todo' do
+      project = create(:project)
+      todo = project.todos.create(description: 'test this todo', completed: false)
+
+      post :update, project_id: project.id, id: todo.id, todo: {completed: true}
+
+      expect(todo.reload.completed?).to eq(true)
+    end
+
+    it 'uncompletes the todo' do
+      project = create(:project)
+      todo = project.todos.create(description: 'test this todo', completed: true)
+
+      post :update, project_id: project.id, id: todo.id, todo: {completed: false}
+
+      expect(todo.reload.completed?).to eq(false)
+    end
+  end
 end

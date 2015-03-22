@@ -1,0 +1,14 @@
+.todo {
+  span[data-bip-value=true] {
+    & + span {
+      color: gray;
+      text-decoration: line-through;
+    }
+
+    color: gray;
+  }
+
+  i {
+    min-width: 15px;
+  }
+}
