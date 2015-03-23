@@ -1,0 +1,28 @@
+#goals {
+  ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-right: 40px;
+
+    li.goal {
+      width: 100%;
+      background-color: lighten(gainsboro, 10%);
+      color: steelblue;
+      border-radius: 3px;
+      border: 1px solid gainsboro;
+      margin-bottom: 10px;
+      margin-top: 10px;
+      padding: 10px;
+
+      &:hover {
+        background-color: steelblue;
+        color: lighten(gainsboro, 5%);
+      }
+
+      .fa-close {
+        float: right;
+      }
+    }
+  }
+}

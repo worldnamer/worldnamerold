@@ -2,6 +2,8 @@
   .container
     %ol
       - @goals.each do |goal|
-        %li.goal{id: "goal_#{goal.id}"}= goal.description
+        %li.goal{id: "goal_#{goal.id}"}
+          = goal.description
+          %i.fa.fa-close
 
     = link_to 'Add', new_goal_path, id: 'create-goal-link'
