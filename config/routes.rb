@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :todos, only: [:new, :create, :update, :destroy]
   end
 
-  resources :goals, only: [:index, :new, :create] do
+  resources :goals, only: [:index, :new, :create, :destroy] do
   end
 
   authenticated :user do

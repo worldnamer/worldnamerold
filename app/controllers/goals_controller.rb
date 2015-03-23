@@ -14,4 +14,11 @@ class GoalsController < ApplicationController
     
     respond_with goal, location: goals_path
   end
+
+  def destroy
+    goal = Goal.find(params[:id])
+    goal.destroy
+
+    respond_with goal, location: goals_path
+  end
 end

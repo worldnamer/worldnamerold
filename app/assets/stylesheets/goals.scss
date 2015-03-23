@@ -15,9 +15,19 @@
       margin-top: 10px;
       padding: 10px;
 
+      a {
+        background-color: lighten(gainsboro, 10%);
+        color: steelblue;
+      }
+
       &:hover {
         background-color: steelblue;
         color: lighten(gainsboro, 5%);
+        
+        a {
+          background-color: steelblue;
+          color: lighten(gainsboro, 5%);
+        }
       }
 
       .fa-close {

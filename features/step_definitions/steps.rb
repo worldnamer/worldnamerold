@@ -138,6 +138,15 @@ When(/^I add a todo to my project$/) do
   click_on 'Create'
 end
 
+When(/^I delete that goal$/) do
+  visit goals_path
+  find(:css, "a#goal_#{@goal.id}.delete-goal-link").click
+end
+
+Then(/^I should have no goals$/) do
+  expect(@user.reload.goals.count).to eq(0)
+end
+
 Then(/^my todo should be done$/) do
   visit project_path(@project)
   
