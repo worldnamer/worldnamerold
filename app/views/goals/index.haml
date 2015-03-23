@@ -7,4 +7,5 @@
           = link_to goal_path(goal), method: :delete, id: "goal_#{goal.id}", class: 'delete-goal-link' do
             %i.fa.fa-close
 
-    = link_to 'Add', new_goal_path, id: 'create-goal-link'
+    = link_to new_goal_path, id: 'create-goal-link' do
+      %button Add

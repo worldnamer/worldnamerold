@@ -107,7 +107,7 @@ end
 
 When(/^I set a new goal$/) do
   visit goals_path
-  click_on 'Add'
+  click_link 'Add'
   @description = 'I want to go visit my friends who can\'t travel without worring about my job.'
   fill_in 'goal[description]', with: @description
   click_on 'Create'
