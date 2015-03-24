@@ -22,4 +22,12 @@ describe Project do
   it 'has todos' do
     subject.todos << Todo.new
   end
+
+  it 'sorts todos by completed, then incomplete' do
+    subject.save
+    bar = subject.todos.create(description: 'bar', completed: false)
+    foo = subject.todos.create(description: 'foo', completed: true)
+
+    expect(subject.reload.todos).to eq([foo, bar])
+  end
 end
