@@ -8,7 +8,8 @@
     li.goal {
       width: 100%;
       background-color: lighten(gainsboro, 10%);
-      color: steelblue;
+      color: black;
+      font-size: 0.9em;
       border-radius: 3px;
       border: 1px solid gainsboro;
       margin-bottom: 10px;
@@ -23,7 +24,7 @@
       &:hover {
         background-color: steelblue;
         color: lighten(gainsboro, 5%);
-        
+
         a {
           background-color: steelblue;
           color: lighten(gainsboro, 5%);
