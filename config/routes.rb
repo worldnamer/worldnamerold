@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   end
 
   resources :goals, only: [:index, :new, :create, :destroy] do
+    collection do
+      post :sort
+    end
   end
 
   authenticated :user do

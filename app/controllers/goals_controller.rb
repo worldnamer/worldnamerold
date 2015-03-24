@@ -21,4 +21,12 @@ class GoalsController < ApplicationController
 
     respond_with goal, location: goals_path
   end
+
+  def sort
+    current_user.goals.each do |goal|
+      goal.position = params[:goal].index(goal.id.to_s) + 1
+      goal.save
+    end
+    head :no_content
+  end
 end

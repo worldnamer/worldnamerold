@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/swanandp/acts_as_list.git
+  revision: 84325ede9ad528acbf68a97c5070cff113ee6a17
+  specs:
+    acts_as_list (0.6.0)
+      activerecord (>= 3.0)
+
+GIT
   remote: git://github.com/worldnamer/best_in_place.git
   revision: f90d50019c64b4447206f0c91a32679af2bc0bf4
   branch: worldnamer_add_dom_update_on_element_update
@@ -138,6 +145,9 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (5.0.3)
       railties (>= 3.2.16)
+    js-routes (1.0.0)
+      railties (>= 3.2)
+      sprockets-rails
     json (1.8.2)
     loofah (2.0.1)
       nokogiri (>= 1.5.9)
@@ -278,6 +288,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_list!
   best_in_place!
   bourbon
   byebug
@@ -292,6 +303,7 @@ DEPENDENCIES
   jquery-rails
   jquery-simulate-drag-sortable-rails!
   jquery-ui-rails
+  js-routes
   pg
   pry-byebug
   pry-doc

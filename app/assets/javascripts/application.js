@@ -16,4 +16,5 @@
 //= require turbolinks
 //= require best_in_place
 //= require jquery.simulate.drag-sortable
+//= require js-routes
 //= require_tree .

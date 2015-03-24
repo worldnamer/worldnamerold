@@ -47,6 +47,12 @@ gem 'font-awesome-rails'
 # Use best_in_place for in-place updating
 gem 'best_in_place', github: 'worldnamer/best_in_place', branch: 'worldnamer_add_dom_update_on_element_update'
 
+# Use js-routes to add the Rails routes to our JS
+gem "js-routes"
+
+# For model sortability of constructs, namely goals
+gem "acts_as_list", github: 'swanandp/acts_as_list'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

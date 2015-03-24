@@ -20,14 +20,12 @@ sortGoals = ->
       update: ->
         # After the sort, we need to send this to the server to save the ordering.
         console.log($('ol').sortable('serialize'))
-        # $.ajax(
-        #   url: sort_goals_path,
-        #   type: 'post',
-        #   data: $('ol').sortable('serialize'),
-        #   dataType: 'script',
-        #   complete: (request) ->
-        #     $('#books').effect('highlight');
-        # );
+        $.ajax(
+          url: Routes.sort_goals_path(),
+          type: 'post',
+          data: $('ol').sortable('serialize'),
+          dataType: 'script'
+        );
     );
 
 # Because of Turbolinks, we call this with an event, rather than $.ready

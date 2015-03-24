@@ -37,6 +37,25 @@ Given(/^I have a project with a todo$/) do
   @todo = @project.todos.create(description: "complete this test")
 end
 
+Given(/^I have the following goals$/) do |table|
+  # table is a Cucumber::Ast::Table
+  table.hashes.each do |hash|
+    @user.goals.create(description: hash[:description])
+  end
+end
+
+When(/^I move the top goal to the bottom$/) do
+  @goal = @user.goals.first
+
+  visit goals_path
+  page.execute_script %Q{
+    $('.goal:first').simulateDragSortable({ move: 1 });
+  }
+
+  # This does two things. First it verifies that the goal was moved in the HTML. Second, it forces us to flush the AJAX call for the update.
+  expect(all(:css, '.goal').last).to have_text @goal.description
+end
+
 When(/^I mark that todo complete$/) do
   visit project_path(@project)
 
@@ -141,6 +160,10 @@ end
 When(/^I delete that goal$/) do
   visit goals_path
   find(:css, "a#goal_#{@goal.id}.delete-goal-link").click
+end
+
+Then(/^it should reorder that goal as last$/) do
+  expect(@user.reload.goals.last).to eq(@goal.reload)
 end
 
 Then(/^I should have no goals$/) do
