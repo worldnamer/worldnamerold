@@ -44,6 +44,12 @@ Given(/^I have the following goals$/) do |table|
   end
 end
 
+When(/^I delete that project$/) do
+  visit projects_path
+  find(:css, '.project a[data-method=delete]').click
+  expect(page).to_not have_content @project.name
+end
+
 When(/^I move the top goal to the bottom$/) do
   @goal = @user.goals.first
 
@@ -160,6 +166,11 @@ end
 When(/^I delete that goal$/) do
   visit goals_path
   find(:css, "a#goal_#{@goal.id}.delete-goal-link").click
+end
+
+Then(/^I should have no projects$/) do
+  visit projects_path
+  expect(all(:css, '.project').count).to eq(1) # JWLL: The add link looks like a project
 end
 
 Then(/^it should reorder that goal as last$/) do
