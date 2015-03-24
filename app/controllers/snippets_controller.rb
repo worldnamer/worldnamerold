@@ -8,7 +8,7 @@ class SnippetsController < ApplicationController
   end
 
   def create
-    @project.snippets.create(params[:snippet].permit([:title, :excerpt, :url]))
+    @project.snippets.create(params.require(:snippet).permit([:title, :excerpt, :url]))
 
     respond_with @project
   end

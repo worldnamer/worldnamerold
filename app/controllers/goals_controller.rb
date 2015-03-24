@@ -11,7 +11,7 @@ class GoalsController < ApplicationController
   end
 
   def create
-    goal = Goal.create(description: params[:goal][:description], user: current_user)
+    goal = Goal.create(description: params.require(:goal).require(:description), user: current_user)
     
     respond_with goal, location: goals_path
   end
@@ -24,8 +24,10 @@ class GoalsController < ApplicationController
   end
 
   def sort
+    goal_indexes = params.require(:goal)
+
     @goals.each do |goal|
-      goal.position = params[:goal].index(goal.id.to_s) + 1
+      goal.position = goal_indexes.index("#{goal.id}") + 1 # acts_as_list uses 1-based indexing
       goal.save!
     end
 

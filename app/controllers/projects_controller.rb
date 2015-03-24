@@ -12,14 +12,14 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    respond_with current_user.projects.create(params[:project].permit([:name, :description]))
+    respond_with current_user.projects.create(params.require(:project).permit([:name, :description]))
   end
 
   def show
   end
 
   def destroy
-    @project.destroy if @project
+    @project.try(:destroy)
 
     respond_with @project
   end
