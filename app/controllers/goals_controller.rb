@@ -1,8 +1,9 @@
 class GoalsController < ApplicationController
   respond_to :html
 
+  before_filter :load_user_goals, only: [:index, :sort]
+
   def index
-    @goals = current_user.goals
   end
 
   def new
@@ -23,10 +24,17 @@ class GoalsController < ApplicationController
   end
 
   def sort
-    current_user.goals.each do |goal|
+    @goals.each do |goal|
       goal.position = params[:goal].index(goal.id.to_s) + 1
       goal.save
     end
+
     head :no_content
+  end
+
+  private
+
+  def load_user_goals
+    @goals = current_user.goals
   end
 end

@@ -9,11 +9,7 @@ class SnippetsController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
 
-    @project.snippets.create(
-      title: params[:snippet][:title], 
-      excerpt: params[:snippet][:excerpt], 
-      url: params[:snippet][:url]
-    )
+    @project.snippets.create(params[:snippet].permit([:title, :excerpt, :url]))
 
     respond_with @project
   end
