@@ -26,7 +26,7 @@ class GoalsController < ApplicationController
   def sort
     @goals.each do |goal|
       goal.position = params[:goal].index(goal.id.to_s) + 1
-      goal.save
+      goal.save!
     end
 
     head :no_content

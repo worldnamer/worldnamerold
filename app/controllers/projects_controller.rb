@@ -1,6 +1,8 @@
 class ProjectsController < ApplicationController
   respond_to :html, :json
 
+  before_filter :load_project, only: [:show, :destroy, :update]
+
   def index
     @projects = current_user.projects
   end
@@ -10,31 +12,26 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    project = Project.new(
-      name: params[:project][:name],
-      description: params[:project][:description],
-      user: current_user
-    )
-    project.save!
-    respond_with project
+    respond_with current_user.projects.create(params[:project].permit([:name, :description]))
   end
 
   def show
-    @project = Project.find(params[:id])
   end
 
   def destroy
-    @project = Project.find(params[:id])
-
     @project.destroy if @project
 
     respond_with @project
   end
 
   def update
-    @project = Project.find(params[:id])
-
     @project.update_attributes(params.require(:project).permit(:name, :description))
     respond_with @project
+  end
+
+  private
+
+  def load_project
+    @project = Project.find(params[:id])
   end
 end
