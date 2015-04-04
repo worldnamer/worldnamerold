@@ -9,7 +9,9 @@
     = stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Gruppo|Source+Sans+Pro'
   %body
     #flash
-      %p.notice= notice
-      %p.alert= alert
+      - if flash[:notice]
+        %p.notice= notice
+      - if flash[:alert]
+        %p.alert= alert
     = yield
     = render partial: 'nav'
