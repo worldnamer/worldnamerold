@@ -55,7 +55,7 @@ When(/^I move the top goal to the bottom$/) do
 
   visit goals_path
   page.execute_script %Q{
-    $('.goal:first').simulateDragSortable({ move: 1 });
+    $('.goal:first').simulateDragSortable({ move: 1, handle: '.fa-sort' });
   }
 
   # This does two things. First it verifies that the goal was moved in the HTML. Second, it forces us to flush the AJAX call for the update.

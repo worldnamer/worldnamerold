@@ -2,6 +2,7 @@ sortGoals = ->
   if $('#goals').length > 0
     $('ol').sortable(
       axis: 'y',
+      handle: '.fa-sort',
       # JWLL: This code stolen from bryanblakey's post at https://forum.jquery.com/topic/sortable-ol-elements-don-t-display-numbers-properly
       sort: ->
         $lis = $(this).children('li');

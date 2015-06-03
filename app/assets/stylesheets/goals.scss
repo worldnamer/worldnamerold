@@ -34,6 +34,17 @@
       .fa-close {
         float: right;
       }
+
+      .fa-sort {
+        margin-right: 5px;
+        color: gainsboro;
+      }
+
+      &:hover {
+        .fa-sort {
+          color: lighten(gainsboro, 5%);
+        }
+      }
     }
   }
 }
