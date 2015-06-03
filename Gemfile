@@ -46,7 +46,7 @@ gem 'jquery-ui-rails'
 gem 'font-awesome-rails'
 
 # Use best_in_place for in-place updating
-gem 'best_in_place', github: 'worldnamer/best_in_place', branch: 'worldnamer_add_dom_update_on_element_update'
+gem 'best_in_place'
 
 # Use js-routes to add the Rails routes to our JS
 gem "js-routes"

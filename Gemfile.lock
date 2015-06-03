@@ -6,15 +6,6 @@ GIT
       activerecord (>= 3.0)
 
 GIT
-  remote: git://github.com/worldnamer/best_in_place.git
-  revision: f90d50019c64b4447206f0c91a32679af2bc0bf4
-  branch: worldnamer_add_dom_update_on_element_update
-  specs:
-    best_in_place (3.0.3)
-      actionpack (>= 3.2)
-      railties (>= 3.2)
-
-GIT
   remote: https://github.com/worldnamer/jquery-simulate-drag-sortable-rails.git
   revision: 7b79a71c70dc688ef10c3778bbfe99fb4d09d0d6
   specs:
@@ -60,6 +51,9 @@ GEM
       tzinfo (~> 1.1)
     arel (6.0.0)
     bcrypt (3.1.10)
+    best_in_place (3.0.3)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bourbon (4.2.1)
@@ -289,7 +283,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_list!
-  best_in_place!
+  best_in_place
   bourbon
   byebug
   coffee-rails (~> 4.1.0)
