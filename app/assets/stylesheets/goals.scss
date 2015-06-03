@@ -48,3 +48,14 @@
     }
   }
 }
+
+#smart-guidelines {
+  margin-top: 10px;
+  display: flex;
+  @include flex-wrap(wrap);
+  justify-content: space-between;
+
+  .tooltip-item {
+    width: 100px;
+  }
+}
