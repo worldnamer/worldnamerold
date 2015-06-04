@@ -14,5 +14,7 @@
         %p.notice= notice
       - if flash[:alert]
         %p.alert= alert
+      - if flash[:error]
+        %p.error= error
     = yield
     = render partial: 'nav'

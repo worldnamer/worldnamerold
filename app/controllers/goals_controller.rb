@@ -2,6 +2,7 @@ class GoalsController < ApplicationController
   respond_to :html
 
   before_filter :load_user_goals, only: [:index, :sort]
+  add_flash_types :error
 
   def index
   end
@@ -11,10 +12,21 @@ class GoalsController < ApplicationController
   end
 
   def create
-    goal_params = params.require(:goal).permit(:description, :life_area)
-    goal = Goal.create(description: goal_params[:description], life_area: LifeArea.find(goal_params[:life_area]), user: current_user)
+    goal_params = params.require(:goal).permit(:description, :life_area, :term)
+    goal = Goal.create(
+      description: goal_params[:description], 
+      life_area: LifeArea.find(goal_params[:life_area]), 
+      term: Term.find(goal_params[:term]),
+      user: current_user
+    )
     
-    respond_with goal, location: goals_path
+    if goal.valid?
+      respond_with goal, location: goals_path
+    else
+      flash.now[:error] = goal.errors.full_messages.first
+      @goal = Goal.new
+      render 'new'
+    end
   end
 
   def destroy

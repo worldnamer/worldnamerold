@@ -11,16 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150603231314) do
+ActiveRecord::Schema.define(version: 20150604001415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "goals", force: :cascade do |t|
-    t.string  "description"
-    t.integer "user_id"
-    t.integer "position"
-    t.integer "life_area_id"
+    t.string   "description"
+    t.integer  "user_id"
+    t.integer  "position"
+    t.integer  "life_area_id"
+    t.integer  "term_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "goals", ["user_id"], name: "index_goals_on_user_id", using: :btree
@@ -45,6 +48,11 @@ ActiveRecord::Schema.define(version: 20150603231314) do
   end
 
   add_index "snippets", ["project_id"], name: "index_snippets_on_project_id", using: :btree
+
+  create_table "terms", force: :cascade do |t|
+    t.integer "days"
+    t.string  "name"
+  end
 
   create_table "todos", force: :cascade do |t|
     t.string  "description"

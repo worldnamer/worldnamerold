@@ -24,7 +24,8 @@ Given(/^another user has a project$/) do
 end
 
 Given(/^I have a goal$/) do
-  @goal = @user.goals.create(description: 'This is a goal.')
+  @goal = @user.goals.create(description: 'This is a goal.', term: Term.first, life_area: LifeArea.first)
+  expect(@goal).to be_valid
 end
 
 Given(/^another user has a goal$/) do
@@ -40,7 +41,7 @@ end
 Given(/^I have the following goals$/) do |table|
   # table is a Cucumber::Ast::Table
   table.hashes.each do |hash|
-    @user.goals.create(description: hash[:description])
+    @user.goals.create(description: hash[:description], term: Term.first, life_area: LifeArea.first)
   end
 end
 
