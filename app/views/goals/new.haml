@@ -3,6 +3,8 @@
     .field
       = f.label :description
       = f.text_field :description
+      = f.label :life_area
+      = f.collection_select :life_area, LifeArea.all, :id, :name
     = f.submit 'Create'
 
   #smart-guidelines

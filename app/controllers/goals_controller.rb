@@ -11,7 +11,8 @@ class GoalsController < ApplicationController
   end
 
   def create
-    goal = Goal.create(description: params.require(:goal).require(:description), user: current_user)
+    goal_params = params.require(:goal).permit(:description, :life_area)
+    goal = Goal.create(description: goal_params[:description], life_area: LifeArea.find(goal_params[:life_area]), user: current_user)
     
     respond_with goal, location: goals_path
   end
