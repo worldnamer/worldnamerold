@@ -1,13 +1,17 @@
 = javascript_include_tag 'jquery.simulate.drag-sortable.js' if Rails.env.test?
 #goals.contentpane
   .container
-    %ol
-      - @goals.each do |goal|
-        %li.goal{id: "goal_#{goal.id}"}
-          %i.fa.fa-sort
-          = goal.description
-          = link_to goal_path(goal), method: :delete, id: "goal_#{goal.id}", class: 'delete-goal-link' do
-            %i.fa.fa-close
+    - term = nil
+    - @goals.group_by { |goal| goal.term }.each_pair do |term, goals|
+      %h2= term.name
+      %ol
+        - goals.each do |goal|
+          %li.goal{id: "goal_#{goal.id}"}
+            %i.fa.fa-sort
+            %i.goal-icon.fa{class: "#{goal.life_area.icon}"}
+            = goal.description
+            = link_to goal_path(goal), method: :delete, id: "goal_#{goal.id}", class: 'delete-goal-link' do
+              %i.fa.fa-close
 
     = link_to new_goal_path, id: 'create-goal-link' do
       %button Add
