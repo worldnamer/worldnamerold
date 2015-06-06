@@ -5,6 +5,7 @@ class GoalsController < ApplicationController
   add_flash_types :error
 
   def index
+    @goals = @goals.includes(:term)
   end
 
   def new
