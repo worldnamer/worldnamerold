@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     margin-right: 40px;
+    margin-bottom: 10px;
 
     li.goal {
       width: 100%;
@@ -12,8 +13,7 @@
       font-size: 0.9em;
       border-radius: 3px;
       border: 1px solid gainsboro;
-      margin-bottom: 10px;
-      margin-top: 10px;
+      margin-bottom: 2px;
       padding: 10px;
 
       a {
@@ -75,6 +75,8 @@
     &.year {
       margin-top: 0px;
     }
+
+    margin-bottom: 5px;
   }
 }
 
