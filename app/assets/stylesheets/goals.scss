@@ -53,10 +53,29 @@
       }
     }
   }
-}
 
-form.new_goal {
-  width: 80%;
+  form.new_goal {
+    width: 90%;
+
+    label, input {
+      display: inline-block;
+    }
+
+    label {
+      width: 100px;
+      text-align: left;
+    }
+
+    label + input {
+      width: 80%;
+    }
+  }
+
+  .term {
+    &.year {
+      margin-top: 0px;
+    }
+  }
 }
 
 #smart-guidelines {

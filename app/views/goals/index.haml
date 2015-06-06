@@ -3,7 +3,7 @@
   .container
     - term = nil
     - @goals.group_by { |goal| goal.term }.each_pair do |term, goals|
-      %h2= term.name
+      %h2.term{class: term.name}= term.name
       %ol
         - goals.each do |goal|
           %li.goal{id: "goal_#{goal.id}"}
