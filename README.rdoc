@@ -1,6 +1,7 @@
 == README
 
 rake db:create db:migrate db:seed db:test:prepare
+
 RAILS_ENV=test rake db:seed
 
 login is fixed, password is development
