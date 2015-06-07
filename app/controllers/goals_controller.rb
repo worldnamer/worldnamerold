@@ -1,7 +1,8 @@
 class GoalsController < ApplicationController
-  respond_to :html
+  respond_to :html, :json
 
   before_filter :load_user_goals, only: [:index, :sort]
+  before_filter :load_goal, only: [:update]
   add_flash_types :error
 
   def index
@@ -41,9 +42,18 @@ class GoalsController < ApplicationController
     respond_with goal, location: goals_path
   end
 
+  def update
+    @goal.update_attributes(params.require(:goal).permit(:description))
+    respond_with @goal, location: goals_path
+  end
+
   private
 
   def load_user_goals
     @goals = current_user.goals.includes(:term, :life_area)
+  end
+
+  def load_goal
+    @goal = Goal.find(params[:id])
   end
 end

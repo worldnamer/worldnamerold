@@ -7,7 +7,7 @@
         - goals.each do |goal|
           %li.goal{id: "goal_#{goal.id}"}
             %i.goal-icon.fa{class: "#{goal.life_area.icon}"}
-            = goal.description
+            = best_in_place goal, :description
             = link_to goal_path(goal), method: :delete, id: "goal_#{goal.id}", class: 'delete-goal-link' do
               %i.fa.fa-close
 

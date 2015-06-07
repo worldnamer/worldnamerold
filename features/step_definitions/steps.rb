@@ -169,6 +169,17 @@ When(/^I delete that goal$/) do
   find(:css, "a#goal_#{@goal.id}.delete-goal-link").click
 end
 
+When(/^I update the goal description to '(.*)'$/) do |description|
+  bip_text @goal, :description, description
+  @goal.description = description
+end
+
+Then(/^my goal should be updated$/) do
+  visit goals_path
+
+  expect(page).to have_content @goal.description
+end
+
 Then(/^I should have no projects$/) do
   visit projects_path
   expect(all(:css, '.project').count).to eq(1) # JWLL: The add link looks like a project
