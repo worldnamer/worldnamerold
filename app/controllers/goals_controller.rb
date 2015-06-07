@@ -2,7 +2,7 @@ class GoalsController < ApplicationController
   respond_to :html, :json
 
   before_filter :load_user_goals, only: [:index, :sort]
-  before_filter :load_goal, only: [:update]
+  before_filter :load_goal, only: [:update, :destroy]
   add_flash_types :error
 
   def index
@@ -36,10 +36,9 @@ class GoalsController < ApplicationController
   end
 
   def destroy
-    goal = Goal.find(params[:id])
-    goal.destroy
+    @goal.destroy
 
-    respond_with goal, location: goals_path
+    respond_with @goal, location: goals_path
   end
 
   def update
