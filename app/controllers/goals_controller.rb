@@ -5,7 +5,10 @@ class GoalsController < ApplicationController
   add_flash_types :error
 
   def index
-    @goals = @goals.includes(:term)
+    # JWLL: Not in love with this - I'd rather do something clever in the DB sort, but I don't really want to think that hard right now. This in-memory
+    # sort is still okay, because there should only be a few dozen (<100) of these to sort.
+    @goals = @goals.group_by { |goal| goal.term.name }
+    @goals.each_pair { |term_name, goal_array| goal_array.sort_by! { |goal| goal.life_area.name } }
   end
 
   def new
@@ -37,20 +40,9 @@ class GoalsController < ApplicationController
     respond_with goal, location: goals_path
   end
 
-  def sort
-    goal_indexes = params.require(:goal)
-
-    @goals.each do |goal|
-      goal.position = goal_indexes.index("#{goal.id}") + 1 # acts_as_list uses 1-based indexing
-      goal.save!
-    end
-
-    head :no_content
-  end
-
   private
 
   def load_user_goals
-    @goals = current_user.goals
+    @goals = current_user.goals.includes(:term).includes(:life_area)
   end
 end
