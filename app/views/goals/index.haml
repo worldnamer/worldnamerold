@@ -1,8 +1,8 @@
 = javascript_include_tag 'jquery.simulate.drag-sortable.js' if Rails.env.test?
 #goals.contentpane
   .container
-    - @goals.each do |term_name, goals|
-      %h2.term{class: term_name}= term_name
+    - @goals.each do |term, goals|
+      %h2.term{class: term.name}= term.name
       %ol
         - goals.each do |goal|
           %li.goal{id: "goal_#{goal.id}"}
