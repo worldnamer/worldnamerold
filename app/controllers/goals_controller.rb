@@ -2,7 +2,7 @@ class GoalsController < ApplicationController
   respond_to :html, :json
 
   before_filter :load_user_goals, only: [:index, :sort]
-  before_filter :load_goal, only: [:update, :destroy]
+  before_filter :load_goal, only: [:update, :destroy, :complete]
   add_flash_types :error
 
   def index
@@ -46,10 +46,16 @@ class GoalsController < ApplicationController
     respond_with @goal, location: goals_path
   end
 
+  def complete
+    @goal.complete
+
+    respond_with @goal, location: goals_path
+  end
+
   private
 
   def load_user_goals
-    @goals = current_user.goals.includes(:term, :life_area)
+    @goals = current_user.goals.includes(:term, :life_area).where(completed: false)
   end
 
   def load_goal

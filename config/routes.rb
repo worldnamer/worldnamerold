@@ -12,7 +12,11 @@ Rails.application.routes.draw do
     resources :todos, only: [:new, :create, :update, :destroy]
   end
 
-  resources :goals, only: [:index, :new, :create, :destroy, :update]
+  resources :goals, only: [:index, :new, :create, :destroy, :update] do
+    member do
+      post :complete
+    end
+  end
 
   authenticated :user do
     root to: 'welcome#main', as: :main

@@ -6,4 +6,8 @@ class Goal < ActiveRecord::Base
 
   validates :life_area, presence: true
   validates :term, presence: true
+
+  def complete
+    update_attributes(completed: true)
+  end
 end

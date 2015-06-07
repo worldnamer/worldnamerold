@@ -37,7 +37,16 @@
         float: right;
       }
 
+      .fa-check-circle-o {
+        float: right;
+        display: none;
+        margin-right: 10px;
+      }
+
       &:hover {
+        .fa-check-circle-o {
+          display: inline;
+        }
       }
     }
   }

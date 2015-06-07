@@ -10,6 +10,8 @@
             = best_in_place goal, :description
             = link_to goal_path(goal), method: :delete, id: "goal_#{goal.id}", class: 'delete-goal-link' do
               %i.fa.fa-close
+            = link_to complete_goal_path(goal), method: :post, id: "goal_#{goal.id}_complete", class: 'complete-goal-link' do
+              %i.fa.fa-check-circle-o
 
     = link_to new_goal_path, id: 'create-goal-link' do
       %button Add

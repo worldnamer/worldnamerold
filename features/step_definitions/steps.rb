@@ -174,6 +174,21 @@ When(/^I update the goal description to '(.*)'$/) do |description|
   @goal.description = description
 end
 
+When(/^I complete my goal$/) do
+  page.execute_script %Q{
+    $('.complete-goal-link').click();
+  }
+end
+
+Then(/^my goal should be completed$/) do
+  expect(@goal.reload).to be_completed
+end
+
+Then(/^my goal should not be visible on the goals page$/) do
+  visit goals_path
+  expect(page).to_not have_content(@goal.description)
+end
+
 Then(/^my goal should be updated$/) do
   visit goals_path
 

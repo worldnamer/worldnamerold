@@ -22,4 +22,18 @@ describe Goal do
 
     expect(goal).to_not be_valid
   end
+
+  it 'has a completed flag' do
+    goal = Goal.create(description: 'desc', user: user, life_area: heart_life_area, term: month_term)
+
+    expect(goal).to_not be_completed
+  end
+
+  it 'can be completed' do
+    goal = Goal.create(description: 'desc', user: user, life_area: heart_life_area, term: month_term)
+
+    goal.complete!
+
+    expect(goal).to be_completed
+  end
 end
