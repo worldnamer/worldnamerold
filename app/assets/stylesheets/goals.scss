@@ -14,7 +14,6 @@
       padding: 10px;
 
       a {
-        background-color: lighten(gainsboro, 10%);
         color: steelblue;
       }
 
@@ -38,15 +37,7 @@
         float: right;
       }
 
-      .fa-sort {
-        margin-right: 5px;
-        color: gainsboro;
-      }
-
       &:hover {
-        .fa-sort {
-          color: lighten(gainsboro, 5%);
-        }
       }
     }
   }
