@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   get '/media' => 'media#index', as: :media
 
-  resources :links, only: [:new, :create]
+  resources :links, only: [:new, :create, :destroy]
 
   authenticated :user do
     root to: 'welcome#main', as: :main

@@ -5,7 +5,7 @@
       .link
         .title= link_to link.title, url_with_protocol(link.url), target: '_blank'
         .excerpt= link.excerpt
-        = link_to '#', name: 'delete-link', method: 'delete' do
+        = link_to link_path(link), name: 'delete-link', method: 'delete' do
           %i.fa.fa-close
   #add-link-link 
     = link_to new_link_path do

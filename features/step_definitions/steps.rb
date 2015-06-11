@@ -45,6 +45,20 @@ Given(/^I have the following goals$/) do |table|
   end
 end
 
+Given(/^I have a link$/) do
+  @link = @user.links.create(title: 'title', excerpt: 'excerpt', url: 'http://example.com')
+end
+
+When(/^I delete that link from my media list$/) do
+  visit media_path
+
+  find(:css, 'a[name=delete-link]').click()
+end
+
+Then(/^I should have no links$/) do
+  expect(Link.count).to be 0
+end
+
 When(/^I delete that project$/) do
   visit projects_path
   find(:css, '.project a[data-method=delete]').click

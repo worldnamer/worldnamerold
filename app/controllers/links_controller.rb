@@ -10,4 +10,12 @@ class LinksController < ApplicationController
 
     respond_with @link, location: media_path
   end
+
+  def destroy
+    @link = Link.find(params[:id])
+
+    @link.destroy
+
+    respond_with @link, location: media_path
+  end
 end
