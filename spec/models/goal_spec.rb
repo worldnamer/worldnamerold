@@ -32,7 +32,7 @@ describe Goal do
   it 'can be completed' do
     goal = Goal.create(description: 'desc', user: user, life_area: heart_life_area, term: month_term)
 
-    goal.complete!
+    goal.complete
 
     expect(goal).to be_completed
   end
