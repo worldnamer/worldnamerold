@@ -34,10 +34,12 @@ ActiveRecord::Schema.define(version: 20150610235804) do
   end
 
   create_table "links", force: :cascade do |t|
-    t.integer "user_id"
-    t.string  "title"
-    t.string  "excerpt"
-    t.string  "url"
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "excerpt"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "links", ["user_id"], name: "index_links_on_user_id", using: :btree
