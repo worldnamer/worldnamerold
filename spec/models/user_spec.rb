@@ -10,4 +10,8 @@ describe User do
   it 'has many goals' do
     expect(subject.goals.count).to be 0
   end
+
+  it 'has many links' do
+    expect(subject.links.count).to be 0
+  end
 end

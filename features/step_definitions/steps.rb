@@ -180,6 +180,24 @@ When(/^I complete my goal$/) do
   }
 end
 
+When(/^I add a link to the media list$/) do
+  visit media_path
+
+  within :css, '#add-link-link' do
+    click_on 'Add'
+  end
+
+  @title = 'Wow, You Can Recycle That? - Earth911.com'
+  fill_in 'link[title]', with: @title
+  fill_in 'link[excerpt]', with: 'A few weeks ago, Earth911 investigated some of the lesser known recyclables. Sure, they don’t receive as much media attention as some of their co-stars like the...'
+  fill_in 'link[url]', with: 'http://example.com'
+  click_on 'Create'
+end
+
+Then(/^I should have that link in my media list$/) do
+  expect(page).to have_content(@title)
+end
+
 Then(/^my goal should be completed$/) do
   expect(@goal.reload).to be_completed
 end

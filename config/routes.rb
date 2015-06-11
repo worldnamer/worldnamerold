@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/media' => 'media#index', as: :media
+
+  resources :links, only: [:new, :create]
+
   authenticated :user do
     root to: 'welcome#main', as: :main
   end

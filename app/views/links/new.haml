@@ -1,0 +1,12 @@
+#create-link.contentpane
+  = form_for @link do |f|
+    .field
+      = f.label :title
+      = f.text_field :title
+    .field
+      = f.label :excerpt
+      = f.text_area :excerpt
+    .field
+      = f.label :url
+      = f.text_field :url
+    = f.submit 'Create'
