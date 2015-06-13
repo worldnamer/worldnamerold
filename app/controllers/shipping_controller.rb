@@ -1,4 +1,5 @@
 require 'csv'
+require 'zip'
 
 class ShippingController < ApplicationController
   def export
