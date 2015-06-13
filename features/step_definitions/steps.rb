@@ -55,10 +55,6 @@ When(/^I delete that link from my media list$/) do
   find(:css, 'a[name=delete-link]').click()
 end
 
-Then(/^I should have no links$/) do
-  expect(Link.count).to be 0
-end
-
 When(/^I delete that project$/) do
   visit projects_path
   find(:css, '.project a[data-method=delete]').click
@@ -215,6 +211,10 @@ When(/^I export data$/) do
     @exception = e
     raise e unless e.message.start_with?('No route matches')
   end
+end
+
+Then(/^I should have no links$/) do
+  expect(Link.count).to be 0
 end
 
 Then(/^I should get an error$/) do
