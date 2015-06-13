@@ -57,6 +57,9 @@ gem "acts_as_list", github: 'swanandp/acts_as_list'
 # For exporting multiple files in a zip archive
 gem 'rubyzip'
 
+# For logging on heroku
+gem 'rails_12factor', group: :production
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
