@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   authenticated :user do
     root to: 'welcome#main', as: :main
+    get '/export' => 'shipping#export', as: :export
   end
 
   unauthenticated do

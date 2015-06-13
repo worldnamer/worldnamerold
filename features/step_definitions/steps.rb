@@ -208,6 +208,23 @@ When(/^I add a link to the media list$/) do
   click_on 'Create'
 end
 
+When(/^I export data$/) do
+  begin
+    visit export_path
+  rescue Exception => e
+    @exception = e
+    raise e unless e.message.start_with?('No route matches')
+  end
+end
+
+Then(/^I should get an error$/) do
+  @exception.present?
+end
+
+Then(/^I should get a file$/) do
+  expect(page.response_headers['Content-Type']).to eq('application/octet-stream')
+end
+
 Then(/^I should have that link in my media list$/) do
   expect(page).to have_content(@title)
 end
