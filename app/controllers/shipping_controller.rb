@@ -10,7 +10,7 @@ class ShippingController < ApplicationController
       links: create_links
     }
 
-    export = Tempfile.new('export')
+    export = Tempfile.new(['export', 'zip'], "#{Rails.root}/tmp")
     Zip::File.open(export.path, Zip::File::CREATE) do |zipfile|
       @files.each do |filename, tempfile|
         zipfile.add("#{filename}.csv", tempfile.path)
@@ -23,7 +23,7 @@ class ShippingController < ApplicationController
   private
 
   def create_csv
-    tempfile = Tempfile.new('export')
+    tempfile = Tempfile.new(['export', 'csv'], "#{Rails.root}/tmp")
 
     CSV.open(tempfile.path, 'wb') do |csv|
       yield(csv)
