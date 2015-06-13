@@ -1,0 +1,9 @@
+#create-section.contentpane
+  = form_for [@project, @section] do |f|
+    .field
+      = f.label :name
+      = f.text_field :name
+    .field
+      = f.label :section_type, 'Type'
+      = f.select :section_type, [['ToDo List', 'todos'], ['Links', 'links']]
+    = f.submit 'Create'

@@ -27,3 +27,11 @@
     = link_to new_project_snippet_path(@project) do
       %i.fa.fa-plus
       Add
+
+  - @project.sections.each do |section|
+    %h2= section.name
+
+  #add-section-link
+    = link_to new_project_section_path(@project) do
+      %i.fa.fa-plus
+      Add Section

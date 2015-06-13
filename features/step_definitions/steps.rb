@@ -213,6 +213,25 @@ When(/^I export data$/) do
   end
 end
 
+When(/^I create a section in that project$/) do
+  visit project_path(@project)
+  within :css, '#add-section-link' do
+    click_on 'Add Section'
+  end
+
+  @name = 'Todo List'
+  @type = 'todos'
+  fill_in 'section[name]', with: @name
+  select 'ToDo List', from: 'section[section_type]'
+  click_on 'Create'
+end
+
+Then(/^I should have that section$/) do
+  expect(page).to have_content @name
+
+  expect(Section.first.section_type).to eq(@type)
+end
+
 Then(/^I should have no links$/) do
   expect(Link.count).to be 0
 end
