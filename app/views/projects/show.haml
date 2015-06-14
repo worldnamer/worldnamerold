@@ -6,7 +6,7 @@
 
   - @project.sections.each do |section|
     %h2.section{id: "section#{section.id}"}
-      = section.name
+      = best_in_place [@project, section], :name
       = link_to project_section_path(@project, section), name: 'delete-link', method: 'delete' do
         %i.fa.fa-close
     = render partial: section.section_type, locals: {project: @project, section: section}

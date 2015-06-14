@@ -1,5 +1,5 @@
 class SectionsController < ApplicationController
-  respond_to :html
+  respond_to :html, :json
 
   before_filter :load_project, only: [:new, :create, :destroy]
 
@@ -11,24 +11,23 @@ class SectionsController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     section_params = params.require(:section).permit(:name, :section_type)
-    # section = Section.create(
-    #   description: goal_params[:description], 
-    #   life_area: LifeArea.find(goal_params[:life_area]), 
-    #   term: Term.find(goal_params[:term]),
-    #   user: current_user
-    # )
     section = @project.sections.create(name: section_params[:name], section_type: section_params[:section_type])
     
     respond_with section, location: project_path(@project)
   end
 
   def destroy
-    @project = Project.find(params[:project_id])
     @section = Section.find(params[:id])
 
     @section.destroy if @project == @section.project
 
     respond_with @project
+  end
+
+  def update
+    @section = Section.find(params[:id])
+    @section.update_attributes(params.require(:section).permit(:name))
+    respond_with @section
   end
 
   private

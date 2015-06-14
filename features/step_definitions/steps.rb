@@ -237,6 +237,18 @@ When(/^I delete that section$/) do
   find(:css, "#section#{@section.id} a[data-method=delete]").click
 end
 
+When(/^I update my links section to be named '(.*)'$/) do |name|
+  @name = name
+
+  visit project_path(@project)
+  bip_text @links, :name, @name
+end
+
+Then(/^that section should be renamed$/) do
+  expect(page).to have_content(@links.name)
+  expect(@links.reload.name).to eq(@name)
+end
+
 Then(/^I should have no sections in that project$/) do
   expect(page).to_not have_content @section.name
 end

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :projects, only: [:index, :new, :create, :show, :destroy, :update] do
-    resources :sections, only: [:new, :create, :destroy] do
+    resources :sections, only: [:new, :create, :destroy, :update] do
       resources :todos, only: [:new, :create, :update, :destroy]
       resources :snippets, only: [:new, :create, :destroy]
     end
