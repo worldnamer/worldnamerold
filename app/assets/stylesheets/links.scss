@@ -20,8 +20,7 @@
     margin-right: 25px;
     .link {
       border-bottom: 1px solid lighten(gainsboro, 10%);
-      padding-top: 10px;
-      padding-bottom: 10px;
+      padding: 10px;
       position: relative;
 
       .title {
@@ -43,8 +42,22 @@
       }
 
       &:hover {
-        .title {
-          color: #90b4d2;
+        background-color: steelblue;
+
+        a {
+          color: lighten(gainsboro, 5%);
+        }
+
+        .excerpt {
+          color: darken(gainsboro, 5%);
+        }
+
+        .fa-close {
+          color: lighten(gainsboro, 5%);
+        }
+
+        .age {
+          color: lighten(steelblue, 20%);
         }
       }
 
