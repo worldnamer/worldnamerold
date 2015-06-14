@@ -1,6 +1,4 @@
 #show-project.contentpane
-  = link_to projects_path, id: 'return-link' do
-    %i.fa.fa-angle-double-left
   %h1= best_in_place @project, :name
   .description= best_in_place @project, :description
 

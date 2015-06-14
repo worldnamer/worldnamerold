@@ -14,22 +14,18 @@
     // JWLL: based on the Bourbon.io cards refill
     $border-radius: 3px !default;
     $base-spacing: 1.5em !default;
-    $project-border-color: gainsboro !default;
-    $project-border: 1px solid $project-border-color;
-    $project-background: lighten($project-border-color, 10%);
-    $project-margin: 0.5em;
+    $project-border: 1px solid gainsboro !default;
+    $project-background: lighten(gainsboro, 10%);
 
     @include transition (all 0.2s ease-in-out);
-
     @include flex-basis(15em);
-    @include flex-grow(1);
 
     background-color: $project-background;
     border-radius: $border-radius;
     border: $project-border;
     box-shadow: 0 2px 4px darken(white, 10%);
     cursor: pointer;
-    margin: $project-margin 2*$project-margin $project-margin 0;
+    margin: 0.5em 1em 0.5em 0;
     position: relative;
 
     .name {
@@ -137,7 +133,10 @@
     margin-right: 25px;
     .link {
       border-bottom: 1px solid lighten(gainsboro, 10%);
-      padding: 10px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
       position: relative;
 
       .title {
@@ -155,7 +154,7 @@
         position: absolute;
         color: steelblue;
         right: 10px;
-        top: 10px;
+        top: 5px;
       }
 
       &:hover {
@@ -176,6 +175,10 @@
     }
   }
 
+  .todos {
+    margin-top: 5px;
+  }
+
   #add-link-link, #add-todo-link, #add-section-link {
     color: steelblue;
     margin-top: 10px;
@@ -187,6 +190,10 @@
 
   #add-link-link, #add-todo-link {
     margin-left: 10px;
+  }
+
+  #add-section-link {
+    margin-bottom: 10px;
   }
 
   a {
