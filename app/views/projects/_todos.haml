@@ -1,0 +1,9 @@
+.todos
+  - section.todos.each do |todo|
+    .todo{id: "todo_#{todo.id}"}
+      = best_in_place todo, :completed, as: :checkbox, url: project_section_todo_path(@project, section, todo), collection: {'false' => raw("<i class='fa fa-square-o'></i>"), 'true' => raw("<i class='fa fa-check-square-o'></i>")}, place_holder: raw("<i class='fa fa-square-o'></i>"), activator: "#todo_#{todo.id}"
+      %span.description= todo.description
+#add-todo-link
+  = link_to new_project_section_todo_path(@project, section) do
+    %i.fa.fa-plus
+    Add
