@@ -13,6 +13,7 @@ end
 
 Given(/^I have a project$/) do
   @project = @user.projects.create(name: 'Test project', description: 'Test description.')
+  @todos = @project.sections.create(name: 'Todos List', section_type: 'todos')
 end
 
 Given(/^I have a snippet$/) do
@@ -35,7 +36,7 @@ end
 Given(/^I have a project with a todo$/) do
   step "I have a project"
 
-  @todo = @project.todos.create(description: "complete this test")
+  @todo = @todos.todos.create(description: "complete this test")
 end
 
 Given(/^I have the following goals$/) do |table|
@@ -142,7 +143,7 @@ end
 
 When(/^I delete the snippet$/) do
   visit project_path(@project)
-  find(:css, 'a[name=delete-link]').click()
+  find(:css, '.link a[name=delete-link]').click()
 end
 
 When(/^I set a new goal$/) do
@@ -232,7 +233,7 @@ end
 
 When(/^I delete that section$/) do
   visit project_path(@project)
-  find(:css, '.section a[data-method=delete]').click
+  find(:css, "#section#{@section.id} a[data-method=delete]").click
 end
 
 Then(/^I should have no sections in that project$/) do

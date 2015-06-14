@@ -9,8 +9,9 @@ Rails.application.routes.draw do
 
   resources :projects, only: [:index, :new, :create, :show, :destroy, :update] do
     resources :snippets, only: [:new, :create, :destroy]
-    resources :todos, only: [:new, :create, :update, :destroy]
-    resources :sections, only: [:new, :create, :destroy]
+    resources :sections, only: [:new, :create, :destroy] do
+      resources :todos, only: [:new, :create, :update, :destroy]
+    end
   end
 
   resources :goals, only: [:index, :new, :create, :destroy, :update] do

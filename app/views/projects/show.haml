@@ -4,17 +4,6 @@
   %h1= best_in_place @project, :name
   .description= best_in_place @project, :description
 
-  %h2 To Do
-  .todos
-    - @project.todos.each do |todo|
-      .todo{id: "todo_#{todo.id}"}
-        = best_in_place todo, :completed, as: :checkbox, url: project_todo_path(@project, todo), collection: {'false' => raw("<i class='fa fa-square-o'></i>"), 'true' => raw("<i class='fa fa-check-square-o'></i>")}, place_holder: raw("<i class='fa fa-square-o'></i>"), activator: "#todo_#{todo.id}"
-        %span.description= todo.description
-  #add-todo-link
-    = link_to new_project_todo_path(@project) do
-      %i.fa.fa-plus
-      Add
-
   %h2 Links
   .links
     - @project.snippets.each do |snippet|
@@ -29,10 +18,20 @@
       Add
 
   - @project.sections.each do |section|
-    %h2.section
+    %h2.section{id: "section#{section.id}"}
       = section.name
       = link_to project_section_path(@project, section), name: 'delete-link', method: 'delete' do
         %i.fa.fa-close
+    - if section.section_type == 'todos'
+      .todos
+        - section.todos.each do |todo|
+          .todo{id: "todo_#{todo.id}"}
+            = best_in_place todo, :completed, as: :checkbox, url: project_section_todo_path(@project, section, todo), collection: {'false' => raw("<i class='fa fa-square-o'></i>"), 'true' => raw("<i class='fa fa-check-square-o'></i>")}, place_holder: raw("<i class='fa fa-square-o'></i>"), activator: "#todo_#{todo.id}"
+            %span.description= todo.description
+      #add-todo-link
+        = link_to new_project_section_todo_path(@project, section) do
+          %i.fa.fa-plus
+          Add
 
   #add-section-link
     = link_to new_project_section_path(@project) do
