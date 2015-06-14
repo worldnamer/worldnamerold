@@ -15,7 +15,7 @@ describe Snippet do
     subject.url = 'http://localhost:3000/projects/2/snippets/1'
   end
 
-  it 'belongs to a project' do
-    subject.project = Project.new
+  it 'belongs to a section' do
+    subject.section = Section.new
   end
 end

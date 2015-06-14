@@ -11,23 +11,16 @@ describe Project do
     subject.description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, officiis sunt neque facilis culpa molestiae necessitatibus delectus veniam provident.'
   end
 
-  it 'has snippets' do
-    subject.snippets << Snippet.new
-  end
-
   it 'belongs to a user' do
     subject.user = User.create
   end
 
-  it 'has todos' do
-    subject.todos << Todo.new
-  end
-
-  it 'sorts todos by completed, then incomplete' do
+  it 'destroys its sections when it is deleted' do
     subject.save
-    bar = subject.todos.create(description: 'bar', completed: false)
-    foo = subject.todos.create(description: 'foo', completed: true)
+    section = subject.sections.create(name: 'links', section_type: 'links')
 
-    expect(subject.reload.todos).to eq([foo, bar])
+    subject.destroy
+
+    expect(Section.count).to eq(0)
   end
 end
