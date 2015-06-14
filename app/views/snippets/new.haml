@@ -1,5 +1,5 @@
 #create-snippet.contentpane
-  = form_for [@project, @snippet] do |f|
+  = form_for [@project, @section, @snippet] do |f|
     .field
       = f.label :title
       = f.text_field :title

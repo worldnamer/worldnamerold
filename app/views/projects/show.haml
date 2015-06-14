@@ -4,18 +4,6 @@
   %h1= best_in_place @project, :name
   .description= best_in_place @project, :description
 
-  %h2 Links
-  .links
-    - @project.snippets.each do |snippet|
-      .link
-        .title= link_to snippet.title, url_with_protocol(snippet.url), target: '_blank'
-        .excerpt= snippet.excerpt
-        = link_to project_snippet_path(@project, snippet), name: 'delete-link', method: 'delete' do
-          %i.fa.fa-close
-  #add-link-link 
-    = link_to new_project_snippet_path(@project) do
-      %i.fa.fa-plus
-      Add
 
   - @project.sections.each do |section|
     %h2.section{id: "section#{section.id}"}
@@ -32,6 +20,19 @@
         = link_to new_project_section_todo_path(@project, section) do
           %i.fa.fa-plus
           Add
+    - elsif section.section_type == 'links'
+      .links
+        - section.snippets.each do |snippet|
+          .link
+            .title= link_to snippet.title, url_with_protocol(snippet.url), target: '_blank'
+            .excerpt= snippet.excerpt
+            = link_to project_section_snippet_path(@project, section, snippet), name: 'delete-link', method: 'delete' do
+              %i.fa.fa-close
+      #add-link-link 
+        = link_to new_project_section_snippet_path(@project, section) do
+          %i.fa.fa-plus
+          Add
+
 
   #add-section-link
     = link_to new_project_section_path(@project) do

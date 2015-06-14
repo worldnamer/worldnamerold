@@ -14,10 +14,11 @@ end
 Given(/^I have a project$/) do
   @project = @user.projects.create(name: 'Test project', description: 'Test description.')
   @todos = @project.sections.create(name: 'Todos List', section_type: 'todos')
+  @links = @project.sections.create(name: 'Links', section_type: 'links')
 end
 
 Given(/^I have a snippet$/) do
-  @project.snippets.create(title: 'Test title', excerpt: 'Test excerpt', url: 'www.example.com')
+  @links.snippets.create(title: 'Test title', excerpt: 'Test excerpt', url: 'www.example.com')
 end
 
 Given(/^another user has a project$/) do
