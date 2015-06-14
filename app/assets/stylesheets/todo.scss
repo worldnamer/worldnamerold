@@ -1,4 +1,5 @@
 .todo {
+  margin-left: 10px;
   span[data-bip-value=true] {
     & + span {
       color: gray;
