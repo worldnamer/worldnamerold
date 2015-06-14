@@ -49,6 +49,10 @@ Given(/^I have a link$/) do
   @link = @user.links.create(title: 'title', excerpt: 'excerpt', url: 'http://example.com')
 end
 
+Given(/^I have a section in that project$/) do
+  @section = @project.sections.create(name: 'sample section', section_type: 'todos')
+end
+
 When(/^I delete that link from my media list$/) do
   visit media_path
 
@@ -224,6 +228,15 @@ When(/^I create a section in that project$/) do
   fill_in 'section[name]', with: @name
   select 'ToDo List', from: 'section[section_type]'
   click_on 'Create'
+end
+
+When(/^I delete that section$/) do
+  visit project_path(@project)
+  find(:css, '.section a[data-method=delete]').click
+end
+
+Then(/^I should have no sections in that project$/) do
+  expect(page).to_not have_content @section.name
 end
 
 Then(/^I should have that section$/) do

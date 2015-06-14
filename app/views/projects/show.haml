@@ -29,7 +29,10 @@
       Add
 
   - @project.sections.each do |section|
-    %h2= section.name
+    %h2.section
+      = section.name
+      = link_to project_section_path(@project, section), name: 'delete-link', method: 'delete' do
+        %i.fa.fa-close
 
   #add-section-link
     = link_to new_project_section_path(@project) do

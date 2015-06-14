@@ -124,6 +124,15 @@
     margin-right: 5px;
   }
 
+  .section {
+    .fa-close {
+      color: steelblue;
+      float: right;
+      font-size: 0.8em;
+      margin-right: 10px;
+    }
+  }
+
   .links {
     margin-right: 25px;
     .link {
@@ -158,7 +167,7 @@
     }
   }
 
-  #add-link-link, #add-todo-link {
+  #add-link-link, #add-todo-link, #add-section-link {
     color: steelblue;
     margin-top: 10px;
 

@@ -1,6 +1,8 @@
 class SectionsController < ApplicationController
   respond_to :html
 
+  before_filter :load_project, only: [:new, :create, :destroy]
+
   def new
     @project = Project.find(params[:project_id])
     @section = Section.new
@@ -18,5 +20,20 @@ class SectionsController < ApplicationController
     section = @project.sections.create(name: section_params[:name], section_type: section_params[:section_type])
     
     respond_with section, location: project_path(@project)
+  end
+
+  def destroy
+    @project = Project.find(params[:project_id])
+    @section = Section.find(params[:id])
+
+    @section.destroy if @project == @section.project
+
+    respond_with @project
+  end
+
+  private
+
+  def load_project
+    @project = Project.find(params[:project_id])
   end
 end
