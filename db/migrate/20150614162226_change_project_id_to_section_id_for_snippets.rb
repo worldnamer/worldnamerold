@@ -4,6 +4,8 @@ end
 
 class Section < ActiveRecord::Base
   belongs_to :project
+
+  has_many :snippets
 end
 
 class Project < ActiveRecord::Base
