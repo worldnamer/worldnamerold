@@ -1,4 +1,4 @@
-class Todo
+class Todo < ActiveRecord::Base
   belongs_to :project_id
 end
 
