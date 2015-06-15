@@ -17,10 +17,10 @@ describe Section do
   it 'destroys its links when it is deleted' do
     section = project.sections.create(name: 'links', section_type: 'links')
 
-    section.snippets.create(title: 'Link description', excerpt: 'Link excerpt', url: 'example.com')
+    section.links.create(title: 'Link description', excerpt: 'Link excerpt', url: 'example.com')
 
     section.destroy
 
-    expect(Snippet.count).to eq(0)
+    expect(Link.count).to eq(0)
   end
 end

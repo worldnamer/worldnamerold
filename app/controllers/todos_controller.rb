@@ -21,6 +21,8 @@ class TodosController < ApplicationController
     render json: @todo
   end
 
+  private
+  
   def load_parents
     @project = Project.find(params[:project_id])
     @section = Section.find(params[:section_id])

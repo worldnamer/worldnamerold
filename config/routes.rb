@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :projects, only: [:index, :new, :create, :show, :destroy, :update] do
     resources :sections, only: [:new, :create, :destroy, :update] do
       resources :todos, only: [:new, :create, :update, :destroy]
-      resources :snippets, only: [:new, :create, :destroy]
+      resources :links, only: [:new, :create, :destroy], controller: 'snippets'
     end
   end
 

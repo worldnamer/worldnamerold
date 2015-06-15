@@ -5,6 +5,7 @@ class ShippingController < ApplicationController
   def export
     @files = { 
       projects: create_projects, 
+      sections: create_sections,
       todos: create_todos, 
       snippets: create_snippets,
       goals: create_goals,
@@ -44,20 +45,31 @@ class ShippingController < ApplicationController
     end
   end
 
+  def create_sections
+    @section_ids = []
+    create_csv do |csv|
+      csv << ['Project_Id', 'Section_Id', 'Name', 'Section_Type']
+      Section.where(project_id: @project_ids).each do |section|
+        csv << [section.project_id, section.id, section.name, section.section_type]
+        @section_ids << section.id
+      end
+    end
+  end
+
   def create_todos
     create_csv do |csv|
-      csv << ['Project_Id', 'Description', 'Completed']
-      Todo.where(project_id: @project_ids).each do |todo|
-        csv << [todo.project_id, todo.description, todo.completed]
+      csv << ['Section_Id', 'Description', 'Completed']
+      Todo.where(section_id: @section_ids).each do |todo|
+        csv << [todo.section_id, todo.description, todo.completed]
       end
     end
   end
 
   def create_snippets
     create_csv do |csv|
-      csv << ['Project_Id', 'Title', 'Excerpt', 'Url']
-      Snippet.where(project_id: @project_ids).each do |snippet|
-        csv << [snippet.project_id, snippet.title, snippet.excerpt, snippet.url]
+      csv << ['Section_Id', 'Title', 'Excerpt', 'Url']
+      Link.where(linkable_id: @section_ids).each do |snippet|
+        csv << [snippet.linkable_id, snippet.title, snippet.excerpt, snippet.url]
       end
     end
   end
@@ -74,7 +86,7 @@ class ShippingController < ApplicationController
   def create_links
     create_csv do |csv|
       csv << ['Title', 'Excerpt', 'Url', 'Created_At', 'Updated_At']
-      current_user.links.each do |link|
+      current_user.links.where(linkable: nil).each do |link|
         csv << [link.title, link.excerpt, link.url, link.created_at, link.updated_at]
       end
     end

@@ -4,19 +4,22 @@ class SnippetsController < ApplicationController
   before_filter :load_parents, only: [:new, :create, :destroy]
 
   def new
-    @snippet = Snippet.new
+    @snippet = Link.new
   end
 
   def create
-    @section.snippets.create(params.require(:snippet).permit([:title, :excerpt, :url]))
+    link_params = params.require(:link).permit([:title, :excerpt, :url])
+    link_params.merge!({user: current_user})
+    
+    @section.links.create(link_params)
 
     respond_with @project
   end
 
   def destroy
-    @snippet = Snippet.find(params[:id])
+    @snippet = Link.find(params[:id])
 
-    @snippet.destroy if @section == @snippet.section
+    @snippet.destroy if @section == @snippet.linkable
 
     respond_with @project
   end

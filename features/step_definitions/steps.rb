@@ -18,7 +18,7 @@ Given(/^I have a project$/) do
 end
 
 Given(/^I have a snippet$/) do
-  @links.snippets.create(title: 'Test title', excerpt: 'Test excerpt', url: 'www.example.com')
+  @links.links.create(title: 'Test title', excerpt: 'Test excerpt', url: 'www.example.com')
 end
 
 Given(/^another user has a project$/) do
@@ -136,9 +136,10 @@ When(/^I create a snippet$/) do
   within :css, '#add-link-link' do
     click_on 'Add'
   end
-  fill_in 'snippet[title]', with: 'Wow, You Can Recycle That? - Earth911.com'
-  fill_in 'snippet[excerpt]', with: 'A few weeks ago, Earth911 investigated some of the lesser known recyclables. Sure, they don’t receive as much media attention as some of their co-stars like the...'
-  fill_in 'snippet[url]', with: 'http://example.com'
+  expect(page).to have_content 'Title'
+  fill_in 'link[title]', with: 'Wow, You Can Recycle That? - Earth911.com'
+  fill_in 'link[excerpt]', with: 'A few weeks ago, Earth911 investigated some of the lesser known recyclables. Sure, they don’t receive as much media attention as some of their co-stars like the...'
+  fill_in 'link[url]', with: 'http://example.com'
   click_on 'Create'
 end
 
@@ -362,9 +363,9 @@ Then(/^I should see my project in the list$/) do
 end
 
 Then(/^I should have a snippet$/) do
-  expect(Snippet.count).to be 1
+  expect(Link.count).to be 1
 end
 
 Then(/^I should have no snippets$/) do
-  expect(Snippet.count).to be 0
+  expect(Link.count).to be 0
 end
