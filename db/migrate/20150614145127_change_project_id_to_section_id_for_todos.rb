@@ -1,3 +1,7 @@
+class Todo
+  belongs_to :project_id
+end
+
 class ChangeProjectIdToSectionIdForTodos < ActiveRecord::Migration
   def change
     add_column :todos, :section_id, :integer
