@@ -1,5 +1,6 @@
 class Link < ActiveRecord::Base
   belongs_to :linkable, polymorphic: true
+  belongs_to :user
 end
 
 class Section < ActiveRecord::Base
