@@ -5,6 +5,8 @@ end
 
 class Section < ActiveRecord::Base
   has_many :links, as: :linkable, dependent: :destroy
+
+  belongs_to :project
 end
 
 class Snippet < ActiveRecord::Base
