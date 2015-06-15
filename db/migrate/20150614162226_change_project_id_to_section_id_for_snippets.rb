@@ -2,6 +2,14 @@ class Snippet < ActiveRecord::Base
   belongs_to :project
 end
 
+class Section < ActiveRecord::Base
+  belongs_to :project
+end
+
+class Project < ActiveRecord::Base
+  has_many :sections
+end
+
 class ChangeProjectIdToSectionIdForSnippets < ActiveRecord::Migration
   def change
     add_column :snippets, :section_id, :integer
