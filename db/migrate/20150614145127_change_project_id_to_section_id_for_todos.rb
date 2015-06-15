@@ -1,5 +1,5 @@
 class Todo < ActiveRecord::Base
-  belongs_to :project_id
+  belongs_to :project
 end
 
 class ChangeProjectIdToSectionIdForTodos < ActiveRecord::Migration
