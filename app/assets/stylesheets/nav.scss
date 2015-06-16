@@ -2,7 +2,7 @@ ul#nav {
   @include texture(180deg, lighten(gainsboro, 10%), darken(gainsboro, 10%), 51, 0); 
 
   height: 100%;
-  width: 100px;
+  width: 5em;
   position: fixed;
   background-color: lighten(gainsboro, 10%);
 
@@ -10,7 +10,7 @@ ul#nav {
   margin: 0;
   padding: 0;
   font-family: 'Gruppo', cursive;
-  font-size: 20px;
+  font-size: 1.25em;
   color: steelblue;
 
   a {
@@ -19,7 +19,7 @@ ul#nav {
   }
 
   li {
-    width: 110px;
+    width: 5.5em;
     overflow: hidden;
 
     a {
