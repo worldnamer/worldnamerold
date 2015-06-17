@@ -7,6 +7,7 @@
     margin-bottom: 10px;
 
     li.goal {
+      position: relative;
       width: 100%;
       color: black;
       font-size: 0.9em;
@@ -15,6 +16,12 @@
       padding-bottom: 5px;
       padding-left: 10px;
       padding-right: 10px;
+
+      span {
+        display: inline-block;
+        width: 74%;
+        margin-left: 1.6em;
+      }
 
       a {
         color: steelblue;
@@ -34,6 +41,8 @@
         display: inline-block;
         width: 1.2em;
         text-align: center;
+        position: absolute;
+        top: 30%;
       }
 
       .fa-close {
