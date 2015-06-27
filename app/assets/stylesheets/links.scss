@@ -4,12 +4,12 @@
     padding: 0;
     margin: 0px;
 
-    font-family: 'Gruppo', cursive;
+    font-family: 'Gruppo', 'GruppoLocal', cursive;
     color: steelblue;
   }
 
   h2 {
-    font-family: 'Gruppo', cursive;
+    font-family: 'Gruppo', 'GruppoLocal', cursive;
     color: steelblue;
     margin-top: 0px;
     margin-bottom: 0;
@@ -28,7 +28,7 @@
       position: relative;
 
       .title {
-        font-family: 'Gruppo', cursive;
+        font-family: 'Gruppo', 'GruppoLocal', cursive;
         font-size: 1.2em;
         color: steelblue;
         margin-right: 20px;
