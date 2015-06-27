@@ -2,7 +2,11 @@
 #life-plan.contentpane
   %ul.accordion-tabs-minimal
     %li.tab-header-and-content
-      %a.tab-link.is-active{:href => "#"} Goals
+      %a#vision.tab-link.is-active{:href => "#"} Vision
+      .tab-content
+        .container
+    %li.tab-header-and-content
+      %a#goals-tab.tab-link{:href => "#"} Goals
       .tab-content
         .container
           - @goals.each do |term, goals|

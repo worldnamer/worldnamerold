@@ -1,3 +1,8 @@
+def visit_goals_path
+  visit life_plan_path
+  click_link 'goals-tab'
+end
+
 Given(/^I am not logged in$/) do
 end
 
@@ -70,7 +75,7 @@ end
 When(/^I move the top goal to the bottom$/) do
   @goal = @user.goals.first
 
-  visit life_plan_path
+  visit_goals_path
   page.execute_script %Q{
     $('.goal:first').simulateDragSortable({ move: 1, handle: '.fa-sort' });
   }
@@ -86,7 +91,7 @@ When(/^I mark that todo complete$/) do
 end
 
 When(/^I view my goals$/) do
-  visit life_plan_path
+  visit_goals_path
 end
 
 When(/^I view the home page$/) do
@@ -149,7 +154,7 @@ When(/^I delete the snippet$/) do
 end
 
 When(/^I set a new goal$/) do
-  visit life_plan_path
+  visit_goals_path
   click_link 'Add'
   @description = 'I want to go visit my friends who can\'t travel without worring about my job.'
   fill_in 'goal[description]', with: @description
@@ -182,7 +187,7 @@ When(/^I add a todo to my project$/) do
 end
 
 When(/^I delete that goal$/) do
-  visit life_plan_path
+  visit_goals_path
   find(:css, "a#goal_#{@goal.id}.delete-goal-link").click
 end
 
@@ -281,12 +286,12 @@ Then(/^my goal should be completed$/) do
 end
 
 Then(/^my goal should not be visible on the goals page$/) do
-  visit life_plan_path
+  visit_goals_path
   expect(page).to_not have_content(@goal.description)
 end
 
 Then(/^my goal should be updated$/) do
-  visit life_plan_path
+  visit_goals_path
 
   expect(page).to have_content @goal.description
 end
@@ -337,7 +342,7 @@ Then(/^I should see one project in the list$/) do
 end
 
 Then(/^I should have a goal$/) do
-  visit life_plan_path
+  visit_goals_path
   expect(page).to have_content @description
 end
 
