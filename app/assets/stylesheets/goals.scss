@@ -107,16 +107,28 @@
     border-bottom: 1px solid gainsboro;
   }
 
-  h2.life-area {
-    display: inline-block;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    text-transform: capitalize;
-    font-family: 'Gruppo', 'GruppoLocal', cursive;
-    color: steelblue;
-  }
-
   .vision_container {
+    h2.life-area {
+      display: inline-block;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      text-transform: capitalize;
+      font-family: 'Gruppo', 'GruppoLocal', cursive;
+      color: steelblue;
+      width: 4em;
+    }
+
+    .identity {
+      display: inline-block;
+      width: 8em;
+    }
+
+    .vision {
+      display: inline;
+    }
+    .purpose {
+      display: inline;
+    }
   }
 }
 

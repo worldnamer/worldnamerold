@@ -65,6 +65,17 @@ Given(/^I have a section in that project$/) do
   @section = @project.sections.create(name: 'sample section', section_type: 'todos')
 end
 
+Given(/^I have this vision$/) do |table|
+  # table is a Cucumber::Ast::Table
+  table.hashes.each do |hash|
+    life_area = LifeArea.where(name: hash[:life_area]).first
+    @identity = life_area.identity = hash[:identity]
+    @vision = life_area.vision = hash[:vision]
+    @purpose = life_area.purpose = hash[:purpose]
+    life_area.save
+  end
+end
+
 When(/^I delete that link from my media list$/) do
   visit media_path
 
@@ -392,4 +403,12 @@ end
 
 Then(/^I should have no snippets$/) do
   expect(Link.count).to be 0
+end
+
+Then(/^I should see the '(.*)' vision$/) do |life_area_name|
+  within("#vision_#{life_area_name}") do
+    expect(page).to have_content @identity
+    expect(page).to have_content @vision
+    expect(page).to have_content @purpose
+  end
 end

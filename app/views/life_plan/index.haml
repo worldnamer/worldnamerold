@@ -6,9 +6,11 @@
       .tab-content
         .container
           - @life_areas.each do |life_area|
-            .vision_container
+            .vision_container{id: "vision_#{life_area.name}"}
               %h2.life-area= life_area.name.titleize
-              %span.description 
+              .identity= life_area.identity
+              .vision= life_area.vision
+              .purpose= life_area.purpose
     %li.tab-header-and-content
       %a#goals-tab.tab-link{:href => "#"} Goals
       .tab-content
