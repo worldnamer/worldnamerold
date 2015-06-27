@@ -1,7 +1,7 @@
 class GoalsController < ApplicationController
   respond_to :html, :json
 
-  before_filter :load_user_goals, only: [:index, :sort]
+  before_filter :load_user_goals, only: :index
   before_filter :load_goal, only: [:update, :destroy, :complete]
   add_flash_types :error
 
@@ -27,7 +27,7 @@ class GoalsController < ApplicationController
     )
     
     if goal.valid?
-      respond_with goal, location: goals_path
+      respond_with goal, location: life_plan_path
     else
       flash.now[:error] = goal.errors.full_messages.first
       @goal = Goal.new
@@ -38,18 +38,18 @@ class GoalsController < ApplicationController
   def destroy
     @goal.destroy
 
-    respond_with @goal, location: goals_path
+    respond_with @goal, location: life_plan_path
   end
 
   def update
     @goal.update_attributes(params.require(:goal).permit(:description))
-    respond_with @goal, location: goals_path
+    respond_with @goal, location: life_plan_path
   end
 
   def complete
     @goal.complete
 
-    respond_with @goal, location: goals_path
+    respond_with @goal, location: life_plan_path
   end
 
   private

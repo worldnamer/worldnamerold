@@ -15,10 +15,13 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :goals, only: [:index, :new, :create, :destroy, :update] do
+    resources :goals, only: [:new, :create, :destroy, :update] do
       member do
         post :complete
       end
+    end
+
+    get '/life-plan', controller: 'life_plan', action: 'index' do
     end
 
     get '/media' => 'media#index', as: :media
