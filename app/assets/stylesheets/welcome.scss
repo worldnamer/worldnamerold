@@ -3,7 +3,7 @@
   width: 54%;
 
   #splash {
-    font-family: 'Gruppo', cursive;
+    font-family: 'Gruppo', 'GruppoLocal', cursive;
     font-size: 10vw;
     text-align: center;
     position: relative;
@@ -23,7 +23,7 @@
 
   #nav {
     color: steelblue;
-    font-family: 'Gruppo';
+    font-family: 'Gruppo', 'GruppoLocal', cursive;
 
     a {
       margin-left: 9%;
@@ -74,7 +74,7 @@
     label {
       margin-right: 10px;
       color: gainsboro;
-      font-family: 'Gruppo', cursive;
+      font-family: 'Gruppo', 'GruppoLocal', cursive;
     }
   }
 }
