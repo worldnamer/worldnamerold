@@ -1,4 +1,13 @@
 #life-plan {
+  padding-left: 10px;
+  padding-top: 10px;
+
+  .accordion-tabs-minimal .tab-content {
+    border-left: 1px solid gainsboro;
+    padding-top: 10px; // Line height for the header is 36px - 16px of font = 20px / 2 for top half = 10px
+    padding-left: 20px;
+  }
+  
   ol {
     list-style-type: none;
     margin: 0;

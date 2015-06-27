@@ -1,17 +1,20 @@
 = javascript_include_tag 'jquery.simulate.drag-sortable.js' if Rails.env.test?
 #life-plan.contentpane
-  .container
-    - @goals.each do |term, goals|
-      %h2.term{class: term.name}= term.name
-      %ol
-        - goals.each do |goal|
-          %li.goal{id: "goal_#{goal.id}"}
-            %i.goal-icon.fa{class: "#{goal.life_area.icon}"}
-            = best_in_place goal, :description
-            = link_to goal_path(goal), method: :delete, id: "goal_#{goal.id}", class: 'delete-goal-link' do
-              %i.fa.fa-close
-            = link_to complete_goal_path(goal), method: :post, id: "goal_#{goal.id}_complete", class: 'complete-goal-link' do
-              %i.fa.fa-check-circle-o
-
-    = link_to new_goal_path, id: 'create-goal-link' do
-      %button Add
+  %ul.accordion-tabs-minimal
+    %li.tab-header-and-content
+      %a.tab-link.is-active{:href => "#"} Goals
+      .tab-content
+        .container
+          - @goals.each do |term, goals|
+            %h2.term{class: term.name}= term.name
+            %ol
+              - goals.each do |goal|
+                %li.goal{id: "goal_#{goal.id}"}
+                  %i.goal-icon.fa{class: "#{goal.life_area.icon}"}
+                  = best_in_place goal, :description
+                  = link_to goal_path(goal), method: :delete, id: "goal_#{goal.id}", class: 'delete-goal-link' do
+                    %i.fa.fa-close
+                  = link_to complete_goal_path(goal), method: :post, id: "goal_#{goal.id}_complete", class: 'complete-goal-link' do
+                    %i.fa.fa-check-circle-o
+          = link_to new_goal_path, id: 'create-goal-link' do
+            %button Add
