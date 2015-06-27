@@ -8,9 +8,9 @@
           - @life_areas.each do |life_area|
             .vision_container{id: "vision_#{life_area.name}"}
               %h2.life-area= life_area.name.titleize
-              .identity= life_area.identity
-              .vision= life_area.vision
-              .purpose= life_area.purpose
+              .identity= best_in_place life_area, :identity, place_holder: '<span class="empty">(identity)</span>'
+              .vision= best_in_place life_area, :vision, place_holder: '<span class="empty">(vision)</span>'
+              .purpose= best_in_place life_area, :purpose, place_holder: '<span class="empty">(purpose)</span>'
     %li.tab-header-and-content
       %a#goals-tab.tab-link{:href => "#"} Goals
       .tab-content

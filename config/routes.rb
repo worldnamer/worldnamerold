@@ -21,6 +21,8 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :life_areas, only: [:update]
+
     get '/life-plan', controller: 'life_plan', action: 'index' do
     end
 

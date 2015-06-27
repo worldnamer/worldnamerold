@@ -270,6 +270,26 @@ When(/^I view my visions$/) do
   visit_visions_path
 end
 
+When(/^I set my '(.*)' vision$/) do |life_area_name|
+  visit_visions_path
+
+  @identity = 'Identity'
+  @vision = 'Vision'
+  @purpose = 'Purpose'
+
+  life_area = LifeArea.where(name: life_area_name).first
+  bip_text life_area, :identity, @identity
+  bip_text life_area, :vision, @vision
+  bip_text life_area, :purpose, @purpose
+end
+
+Then(/^my '(.*)' vision should be updated$/) do |life_area_name|
+  life_area = LifeArea.where(name: life_area_name).first
+  expect(life_area.identity).to eq(@identity)
+  expect(life_area.vision).to eq(@vision)
+  expect(life_area.purpose).to eq(@purpose)
+end
+
 Then(/^I should see all the life areas$/) do
   LifeArea.all.each do |life_area|
     expect(page).to have_content(life_area.name.titleize)
