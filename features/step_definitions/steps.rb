@@ -3,6 +3,11 @@ def visit_goals_path
   click_link 'goals-tab'
 end
 
+def visit_visions_path
+  visit life_plan_path
+  click_link 'visions-tab'
+end
+
 Given(/^I am not logged in$/) do
 end
 
@@ -248,6 +253,20 @@ When(/^I update my links section to be named '(.*)'$/) do |name|
 
   visit project_path(@project)
   bip_text @links, :name, @name
+end
+
+When(/^I view my visions$/) do
+  visit_visions_path
+end
+
+Then(/^I should see all the life areas$/) do
+  LifeArea.all.each do |life_area|
+    expect(page).to have_content(life_area.name.titleize)
+  end
+end
+
+Then(/^no visions should be present$/) do
+  pending # express the regexp above with the code you wish you had
 end
 
 Then(/^that section should be renamed$/) do
