@@ -32,5 +32,15 @@ describe TodosController do
 
       expect(todo.reload.completed?).to eq(false)
     end
+
+    it 'updates the description' do
+      project = create(:project)
+      section = project.sections.create(name: 'todos', section_type: 'todos')
+      todo = section.todos.create(description: 'test this todo', completed: false)
+
+      post :update, project_id: project.id, section_id: section.id, id: todo.id, todo: {description: 'some new todo'}
+
+      expect(todo.reload.description).to eq('some new todo')
+    end
   end
 end

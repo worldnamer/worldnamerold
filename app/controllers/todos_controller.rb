@@ -15,8 +15,7 @@ class TodosController < ApplicationController
   def update
     @todo = Todo.find(params[:id])
 
-    @todo.completed = params.require(:todo)[:completed] == 'true'
-    @todo.save!
+    @todo.update_attributes(params.require(:todo).permit([:completed, :description]))
 
     render json: @todo
   end

@@ -103,7 +103,7 @@ end
 When(/^I mark that todo complete$/) do
   visit project_path(@project)
 
-  find(:css, "#todo_#{@todo.id}").click
+  find(:css, ".todo .best_in_place").click
 end
 
 When(/^I view my goals$/) do
@@ -281,6 +281,16 @@ When(/^I set my '(.*)' vision$/) do |life_area_name|
   bip_text life_area, :identity, @identity
   bip_text life_area, :vision, @vision
   bip_text life_area, :purpose, @purpose
+end
+
+When(/^I update that todo to '(.*)'$/) do |new_todo_description|
+  visit project_path(@project)
+
+  bip_text @todo, :description, new_todo_description
+end
+
+Then(/^my todo should be '(.*)'$/) do |new_todo_description|
+  expect(@todo.reload.description).to eq(new_todo_description)
 end
 
 Then(/^my '(.*)' vision should be updated$/) do |life_area_name|
