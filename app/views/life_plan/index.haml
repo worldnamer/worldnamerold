@@ -7,7 +7,9 @@
         .container
           - @life_areas.each do |life_area|
             .vision_container{id: "vision_#{life_area.name}"}
-              %h2.life-area= life_area.name.titleize
+              %h2.life-area
+                %i.fa{class: "#{life_area.icon}"}
+                = life_area.name.titleize
               .identity= best_in_place life_area, :identity, place_holder: '<span class="empty">(identity)</span>'
               .vision= best_in_place life_area, :vision, place_holder: '<span class="empty">(vision)</span>'
               .purpose= best_in_place life_area, :purpose, place_holder: '<span class="empty">(purpose)</span>'

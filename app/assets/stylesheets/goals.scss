@@ -115,7 +115,14 @@
       text-transform: capitalize;
       font-family: 'Gruppo', 'GruppoLocal', cursive;
       color: steelblue;
-      width: 4em;
+      width: 4.6em;
+
+      .fa {
+        display: inline-block;
+        width: 1.2em;
+        text-align: center;
+        font-size: 0.75em;
+      }
     }
 
     .identity {
