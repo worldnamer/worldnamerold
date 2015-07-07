@@ -103,7 +103,7 @@ end
 When(/^I mark that todo complete$/) do
   visit project_path(@project)
 
-  find(:css, ".todo .best_in_place:first").click
+  all(:css, ".todo .best_in_place").first.click
 end
 
 When(/^I view my goals$/) do
