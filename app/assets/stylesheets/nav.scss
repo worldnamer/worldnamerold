@@ -1,10 +1,8 @@
 ul#nav {
-  @include texture(180deg, lighten(gainsboro, 10%), darken(gainsboro, 10%), 51, 0); 
-
   height: 100%;
-  width: 5em;
+  width: 5px;
   position: fixed;
-  background-color: lighten(gainsboro, 10%);
+  background-color: #ccc;
 
   list-style-type: none;
   margin: 0;
@@ -19,7 +17,7 @@ ul#nav {
   }
 
   li {
-    width: 5.5em;
+    width: 5em;
     overflow: hidden;
 
     a {
