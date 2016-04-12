@@ -289,6 +289,20 @@ When(/^I update that todo to '(.*)'$/) do |new_todo_description|
   bip_text @todo, :description, new_todo_description
 end
 
+When(/^I set my why contribution to '(.*)'$/) do |contribution|
+  why = WhyStatement.first
+  @contribution = contribution
+
+  bip_text why, :contribution, contribution
+end
+
+When(/^I set my why impact to '(.*)'$/) do |impact|
+  why = WhyStatement.first
+  @impact = impact
+
+  bip_text why, :impact, impact
+end
+
 Then(/^my todo should be '(.*)'$/) do |new_todo_description|
   expect(@todo.reload.description).to eq(new_todo_description)
 end
@@ -441,4 +455,10 @@ Then(/^I should see the '(.*)' vision$/) do |life_area_name|
     expect(page).to have_content @vision
     expect(page).to have_content @purpose
   end
+end
+
+Then(/^my why should be updated$/) do
+  why = WhyStatement.first
+  expect(why.impact).to eq(@impact)
+  expect(why.contribution).to eq(@contribution)
 end

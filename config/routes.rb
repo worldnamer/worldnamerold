@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
     resources :life_areas, only: [:update]
 
+    resources :why_statements, only: [:update]
+
     get '/life-plan', controller: 'life_plan', action: 'index' do
     end
 

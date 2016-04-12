@@ -5,6 +5,13 @@
       %a#visions-tab.tab-link.is-active{:href => "#"} Visions
       .tab-content
         .container
+          %h2
+            To
+            %span.contribution= best_in_place @why, :contribution, place_holder: '<span class="empty">(contribution)</span>'
+            %br
+            so that
+            %span.impact= best_in_place @why, :impact, place_holder: '<span class="empty">(impact)</span>'
+
           - @life_areas.each do |life_area|
             .vision_container{id: "vision_#{life_area.name}"}
               %h2.life-area

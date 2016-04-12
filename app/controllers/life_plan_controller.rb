@@ -1,5 +1,7 @@
 class LifePlanController < ApplicationController
   def index
+    @why = WhyStatement.first_or_create
+
     @life_areas = LifeArea.all.order(:name)
 
     @goals = current_user.goals.includes(:term, :life_area).where(completed: false)
